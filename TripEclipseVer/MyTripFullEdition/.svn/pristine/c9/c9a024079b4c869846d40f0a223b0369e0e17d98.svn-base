@@ -1,0 +1,124 @@
+package com.example.myontheway01;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.myontheway01.fragment.MainFragment;
+import com.example.myontheway01.fragment.MoreFragment;
+import com.example.myontheway01.fragment.NewsFragment;
+import com.example.myontheway01.fragment.SearchFragment;
+import com.example.myontheway01.view.SlidingMenu;
+
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.FeatureInfo;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
+/**
+ * 主界面动态绑定fragment时，要继承FragmentActivity
+ * */
+
+public class MainActivity extends FragmentActivity implements OnCheckedChangeListener,OnClickListener{//注意此处倒得包
+  //声明
+	private List<Fragment> fragments;//该集合用来存放碎片
+	private MainFragment mMainFragment;
+	private NewsFragment mNewsFragment;
+	private SearchFragment mSearchFragment;
+	private MoreFragment mMoreFragment;
+	private RadioGroup mRG;
+	private TextView mTitleTv;
+	private ImageView mUserHeadIv;
+	private SlidingMenu mLeftMenu ;
+	@Override
+		protected void onCreate(Bundle arg0) {
+			// TODO Auto-generated method stub
+			super.onCreate(arg0);
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
+			setContentView(R.layout.activity_main);
+			//初始化控件
+			initView();
+		}
+	/**
+	 * 初始化控件
+	 * */
+	private void initView() {
+		// TODO Auto-generated method stub
+		mUserHeadIv=(ImageView) findViewById(R.id.iv_user_head);
+		mUserHeadIv.setOnClickListener(this);
+		fragments=new ArrayList<Fragment>();
+		//fragment可以直接new
+		mMainFragment=new MainFragment();
+		mNewsFragment=new NewsFragment();
+		mSearchFragment=new SearchFragment();
+		mMoreFragment=new MoreFragment();
+		fragments.add(mMainFragment);
+		fragments.add(mNewsFragment);
+		fragments.add(mSearchFragment);
+		fragments.add(mMoreFragment);
+		showFragment(R.id.frameLayout1,fragments.get(0));
+		mRG=(RadioGroup) findViewById(R.id.rg_select);
+		mRG.setOnCheckedChangeListener(this);
+		mTitleTv=(TextView) findViewById(R.id.tv_title);
+		mTitleTv.setText("主页");
+		mLeftMenu = (SlidingMenu) findViewById(R.id.id_menu);
+	}
+	/**
+	 * 显示fragment  第一个参数为显示到的组件的id,第二个参数为要显示的fragment
+	 * */
+	public void showFragment(int id,Fragment fragment) {
+		FragmentManager manager=getSupportFragmentManager();//注意此处导入v4包
+		FragmentTransaction transaction=manager.beginTransaction();
+		transaction.replace(id,fragment);
+		transaction.commit();
+	}
+	@Override
+	public void onCheckedChanged(RadioGroup arg0, int id) {
+		// TODO Auto-generated method stub
+		switch (id) {
+		case R.id.rb_main:
+			showFragment(R.id.frameLayout1, fragments.get(0));
+			mTitleTv.setText("主页");
+			break;
+		case R.id.rb_news:
+			showFragment(R.id.frameLayout1, fragments.get(1));
+			mTitleTv.setText("新闻");
+			break;
+		case R.id.rb_search:
+			showFragment(R.id.frameLayout1, fragments.get(2));
+			mTitleTv.setText("查询");
+			break;
+		case R.id.rb_more:
+			showFragment(R.id.frameLayout1, fragments.get(3));
+			mTitleTv.setText("更多");
+			break;
+		default:
+			break;
+		}
+	}
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+		startActivity(intent);
+	}
+	/**
+	 * 侧滑
+	 * */
+	public void toggleMenu(View view)
+	{
+		mLeftMenu.toggle();
+	}
+	
+}

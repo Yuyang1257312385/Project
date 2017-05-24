@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_user_register_bg">
+
+    <TextView
+        android:id="@+id/tv_title_register_data"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/hlv_overscroll_glow"
+        android:gravity="center"
+        android:text="填写资料"
+        android:textColor="#ffffff"
+        android:textSize="24sp" />
+    <!-- 线性布局 -->
+
+    <LinearLayout
+        android:id="@+id/lineraLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title_register_data"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/longin_shapre_bg"
+            android:ems="10"
+            android:hint="请输入你的昵称"
+            android:textColor="#ffffff"
+            android:paddingLeft="5dp"
+            android:inputType="textPersonName" />
+        
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/longin_shapre_bg"
+            android:ems="10"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:hint="请输入密码"
+            android:textColor="#ffffff"
+            android:maxLength="10"
+            android:paddingLeft="5dp"
+            android:inputType="textPassword" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#00000000" />
+
+        <EditText
+            android:id="@+id/et_repassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/longin_shapre_bg"
+            android:ems="10"
+            android:hint="请再次输入密码"
+            android:textColor="#ffffff"
+            android:paddingLeft="5dp"
+            android:inputType="textPassword" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#00000000" />
+
+        
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/lineraLayout1"
+        android:background="@drawable/login_button_bg"
+        android:text="完   成"
+        android:textColor="#8B668B" 
+        android:textSize="18sp"/>
+
+</RelativeLayout>

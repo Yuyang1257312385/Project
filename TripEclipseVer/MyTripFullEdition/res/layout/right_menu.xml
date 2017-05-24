@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".MainActivity" >
+    
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:text="精选"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:background="#8B668B"
+        android:textColor="#ffffff" />
+<com.example.myontheway01.view.XCRoundImageView
+        android:id="@+id/iv_user_head"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/img_head_bg"
+        />
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rg_select"
+        android:layout_below="@+id/tv_title" >
+
+    </FrameLayout>
+    
+
+    <RadioGroup
+        android:id="@+id/rg_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#8B668B">
+
+        <RadioButton
+            android:id="@+id/rb_main"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:button="@null"
+            android:drawableTop="@drawable/main_selection_bg"
+            android:text="攻略" 
+            android:textColor="@drawable/main_text_clolr"
+            android:gravity="center"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_news"
+           android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableTop="@drawable/main_sepcial_bg"
+            android:text="旅行" 
+            android:textColor="@drawable/main_text_clolr"
+            android:gravity="center" 
+           />
+        
+         
+    
+         <RadioButton
+             android:id="@+id/rb_search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableTop="@drawable/main_exercise_bg"
+            android:text="动态" 
+            android:textColor="@drawable/main_text_clolr"
+            android:gravity="center" 
+            />
+         <RadioButton
+             android:id="@+id/rb_more"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableTop="@drawable/main_record_bg"
+            android:text="附近" 
+            android:textColor="@drawable/main_text_clolr"
+            android:gravity="center" 
+            />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="发表说说" 
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:background="@drawable/post_say"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

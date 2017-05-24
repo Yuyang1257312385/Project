@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <!--
+引用 jar 中的布局:预加载的效果,可以自己在代码中控制它的隐藏与显
+示
+-->
+
+    <include layout="@layout/loading" />
+    
+    
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+         android:id="@+id/pull_refresh_list"
+         android:layout_width="fill_parent"
+         android:layout_height="fill_parent" />
+    <!--
+引用 jar 中的布局:上拉加载,下拉刷新,listview 三个控件， 包含在一个
+自定义的相对布局中
+    -->
+
+  <!--    <include
+        android:id="@+id/jingxuanLinearlayout"
+        layout="@layout/listview_zidingyi" />-->
+
+</RelativeLayout>

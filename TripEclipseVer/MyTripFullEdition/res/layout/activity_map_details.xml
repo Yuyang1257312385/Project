@@ -1,0 +1,189 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_h"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/sd_tv_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="12"
+                android:singleLine="true"
+                android:paddingLeft="0dp"
+                android:text="地点名:"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/sd_tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxEms="20"
+                android:singleLine="false"
+                android:text="距离:"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@android:color/background_dark" />
+
+    <ImageView
+        android:id="@+id/sd_iv_vista"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/abc_ic_go"
+        android:layout_gravity="center_horizontal"
+         />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:text="综合评价："
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/sd_rb_environmentRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            style="@android:attr/ratingBarStyle"
+            android:numStars="5" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sd_tv_shopHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:text="POI时间"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/sd_tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="POI标签；"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        >
+            
+    <TextView
+        android:id="@+id/sd_tv_telephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="poi 电话"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+    <RadioButton
+        android:id="@+id/phone_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/menu_customer_service"
+        android:button="@null" />
+
+      </LinearLayout>
+     </LinearLayout>
+    
+    <TextView
+        android:id="@+id/sd_tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="poi 类型"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+    
+    
+      <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@android:color/background_dark" />
+        
+    
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:orientation="horizontal" >
+
+      
+        <Button
+            android:id="@+id/sd_btn_navigation"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/map_button_bg"
+            android:button="@null"
+            android:drawableTop="@drawable/map_button_bg"
+            android:text="去这里"
+            android:textColor="#ffffff"
+            android:gravity="center"
+           />
+
+        <RadioButton
+            android:id="@+id/rout_btn"
+           android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/map_button_bg"
+            android:button="@null"
+            android:text="导航"
+            android:textColor="#ffffff"
+            android:gravity="center"
+           />
+    
+    </LinearLayout>
+
+</LinearLayout>

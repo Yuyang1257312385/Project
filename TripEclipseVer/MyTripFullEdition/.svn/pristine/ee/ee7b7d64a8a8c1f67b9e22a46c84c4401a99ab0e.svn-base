@@ -1,0 +1,11 @@
+package com.example.myontheway01;
+/**
+ * myOnTheWay01
+ * 1.实现主界面四个按钮的点击效果
+ * 2.点击不同的按钮，显示不同的碎片
+ * myOnTheWay02
+ * 1.设置欢迎界面，滑动时候有图片小圆点切换
+ * */
+public class Update {
+
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/jy2">
+
+    <ListView
+        android:id="@+id/lv_foo_print"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_below="@+id/rl_mg" >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/rl_mg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/foot_print_bg" 
+       >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sed_msg_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="发表" 
+            android:textColor="#000000"
+            android:textSize="17sp"
+            android:background="@drawable/login_btn_bg_on"/>
+
+        <EditText
+            android:id="@+id/et_sed_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/sed_msg_btn1"
+            android:ems="10"
+            android:gravity="top"
+           android:background="#00000000"
+            android:hint="记录下你最美的足迹吧......" />
+
+        <Button
+            android:id="@+id/location_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/et_sed_msg"
+            android:background="@null"
+            android:drawableBottom="@drawable/xinfang_af_14"
+            android:textSize="9sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

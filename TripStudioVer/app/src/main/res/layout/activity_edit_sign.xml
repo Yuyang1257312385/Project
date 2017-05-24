@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    android:background="@drawable/img_user_register_bg"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/et_update"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_feedback_content_bg"
+        android:ems="10"
+        android:hint="输入个性签名......"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:textSize="20sp" 
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+       android:background="@drawable/login_button_bg"
+        android:textColor="#8B668B"
+        android:text="修    改" />
+
+</LinearLayout>

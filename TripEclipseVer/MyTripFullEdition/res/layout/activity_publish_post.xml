@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c0c0c0"
+    >
+ <RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    >   
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="#8B668B"
+        android:gravity="center"
+        android:text="发表动态"
+        android:textSize="22sp"
+        android:textColor="#ffffff"
+       />
+
+    <TextView
+        android:id="@+id/tv_quit_publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_margin="3dp"
+        android:layout_alignBottom="@+id/tv_title"
+        android:layout_alignParentLeft="true"
+        android:text="取消"
+        
+        android:textColor="#ffffff"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_publish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:layout_alignBottom="@+id/tv_title"
+        android:layout_alignParentRight="true"
+        android:text="发表" 
+        
+        android:padding="4dp"
+        android:textColor="#ffffff"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/et_post_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="0dp"   
+        android:ems="10" 
+        android:minLines="5"
+        android:background="@null"
+        android:gravity="top">
+
+        <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:id="@+id/iv_post"
+        android:layout_width="70dip"
+        android:layout_height="100dip"
+        android:layout_below="@+id/et_post_content"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/img_post_iv_bg" />
+
+    <TextView
+        android:id="@+id/tv_add_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/iv_post"
+        android:layout_below="@+id/et_post_content"
+        android:layout_marginTop="60dp"
+        android:text="添加图片"
+         />
+    <View style="@style/EditTextLineStyle" />
+
+    <TextView
+        android:id="@+id/tv_getpoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_post"
+        android:layout_alignParentLeft="true"
+        android:text="地点" />
+   
+</RelativeLayout>
+</RelativeLayout>

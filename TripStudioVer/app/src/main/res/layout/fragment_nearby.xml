@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+<RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_title"
+        android:background="#8B668B" >
+
+     
+            <RelativeLayout
+                android:id="@+id/rl_search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/check_in_list_search_bg" >
+
+                <!--
+    <RelativeLayout
+        android:id="@+id/rl_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/search_bar_edit_normal" >
+                -->
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:hint="搜索附近"
+                    android:maxLines="2"
+                    android:padding="5dp"
+                    android:textColorHint="#949494"
+                    android:textSize="14sp" />
+
+             <!--  <ImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/et_search"
+                    android:layout_alignRight="@+id/et_search"
+                    android:layout_alignTop="@+id/et_search"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/search_bar_icon_normal" />  --> 
+                <ImageView
+                android:id="@+id/iv_search"
+                android:layout_width="35dp"
+                android:layout_height="30dp" 
+                    android:layout_alignBottom="@+id/et_search"
+                    android:layout_alignRight="@+id/et_search"
+                    android:layout_alignTop="@+id/et_search"
+                android:layout_margin="5dp"
+                android:background="@drawable/search"
+               />
+            </RelativeLayout>
+
+    </RelativeLayout>
+    
+
+    <GridView
+        android:id="@+id/gv_near_by"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:horizontalSpacing="20dp"
+        android:listSelector="#00000000"
+        android:numColumns="3"
+        android:padding="5dp"
+        android:verticalSpacing="20dp" >
+    </GridView>
+
+</LinearLayout>

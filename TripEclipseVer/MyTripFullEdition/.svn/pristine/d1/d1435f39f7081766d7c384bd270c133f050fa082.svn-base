@@ -1,0 +1,27 @@
+package com.example.myontheway01.fragment;
+
+import com.example.myontheway01.R;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebView.FindListener;
+
+public class NewsFragment extends Fragment{
+   private WebView mNetWorkWv;
+   private String url = "http://m.tuniu.com/";// ;ţ
+   //private String url="http://www.biadu.com/";
+	@Override
+public View onCreateView(LayoutInflater inflater, ViewGroup container,
+		Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	View v=inflater.inflate(R.layout.fragment_news, null);	
+	mNetWorkWv=(WebView) v.findViewById(R.id.wv_news);   	
+	mNetWorkWv.loadUrl(url);
+	return v;
+}
+	
+}

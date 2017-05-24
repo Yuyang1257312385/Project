@@ -1,0 +1,34 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible" >
+
+    <com.example.loadrefresh.PullToRefreshLayout
+     
+        android:id="@+id/refresh_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- 头上的刷新的一个预加载的样式，刷新信息 -->
+
+        <include layout="@layout/refresh_head" />
+        <!-- 支持所有实现Pullable接口的View -->
+        <!-- 显示我们的列表数据 -->
+
+        <com.example.loadrefresh.PullableListView
+            android:id="@+id/jingxuan_detail_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:divider="#ffffff"
+            android:dividerHeight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
+        <!-- 预加载的控件，上拉加载更多 -->
+
+        <include layout="@layout/load_more" />
+    </com.example.loadrefresh.PullToRefreshLayout>
+
+</LinearLayout>

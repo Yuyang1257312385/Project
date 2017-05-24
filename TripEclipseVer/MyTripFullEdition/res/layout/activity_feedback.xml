@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     android:background="@drawable/img_user_register_bg" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="#8B668B" >
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="意见反馈"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/btn_back_another_page"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/feedback_bg" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/round_feedback_content_bg" >
+
+        <EditText
+            android:id="@+id/et_feedback_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@null"
+            android:gravity="top|left"
+            android:hint="请输入你的宝贵意见"
+            android:paddingLeft="10dp"
+            android:textSize="16sp" >
+
+            <requestFocus />
+        </EditText>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_button_bg"
+        android:text="提   交"
+        android:textColor="#8B668B" 
+        android:textSize="20sp"/>
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+     android:id="@+id/pull_refresh_list"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent" />
+
+</LinearLayout>

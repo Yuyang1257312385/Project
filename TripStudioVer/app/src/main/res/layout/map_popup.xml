@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_button_bg_left_off"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:gravity="left|center_vertical"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="名称:" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2.5"
+                    android:gravity="left" >
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="电话:" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="right|center_vertical" >
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="100dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:gravity="left|center_vertical"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="地址:" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1.0px"
+            android:background="#ffd0d0d0" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60.0dip"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/path_btn"
+                style="@style/text_15_666666_sdw"
+                android:layout_width="wrap_content"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="20.0dip"
+                android:background="@null"
+                android:gravity="center"
+                android:text="点击进入详情"
+               android:textSize="24dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:layout_below="@+id/ll"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/anjuke61price_discover_greenarrow" />
+
+</RelativeLayout>

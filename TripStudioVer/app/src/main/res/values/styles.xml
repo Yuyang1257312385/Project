@@ -1,0 +1,80 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="sdw_white">  
+        <item name="android:shadowColor">#7fffffff</item>  
+        <item name="android:shadowDx">0.0</item>  
+        <item name="android:shadowDy">0.65</item>  
+        <item name="android:shadowRadius">1.0</item>  
+    </style>
+    <style name="text_15_666666_sdw" parent="@style/sdw_white">  
+        <item name="android:textSize">15.0dip</item>  
+        <item name="android:textColor">#ff666666</item>  
+    </style>  
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <!-- 登录和注册界面 输入框的样式 -->
+    <style name="LoginEditTextStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:ems">10</item>
+    </style>
+    <!-- 分离两个框的一条线的样式 -->
+    <style name="EditTextLineStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        
+    </style>
+    <!-- 日间/夜间 模式 -->
+    <style name="ModeCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_mode</item>
+        <item name="android:paddingLeft">10.0dip</item>
+    </style>
+    <style name="TextTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:shadowColor">#00000000</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">0</item>
+        <item name="android:background">@null</item>
+        
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#242424</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+        <style name="TextTheme.tipstheme">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="TextTheme.tipstheme_second">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#888888</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+        <style name="TextTheme.tipstheme_buttontext">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+</resources>

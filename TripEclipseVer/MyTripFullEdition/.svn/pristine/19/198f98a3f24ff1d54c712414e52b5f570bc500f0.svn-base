@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     android:background="@drawable/pre_wel_bgimg"
+     android:gravity="center_horizontal"
+     android:id="@+id/rl_pre_welcome">
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="100dp"
+        android:padding="10dp"
+        android:src="@drawable/pre_wel_logo" />
+    <TextView
+        android:id="@+id/tv_logo"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/iv_logo"
+        android:layout_marginTop="5dp"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="旅  途" />
+    <TextView
+        android:id="@+id/tv_logo1"
+        android:layout_width="180dp"
+        android:layout_height="20dp"
+        
+        android:layout_below="@+id/tv_logo"
+        android:layout_marginTop="5dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="一场说走就走的旅行" />
+
+</RelativeLayout>
