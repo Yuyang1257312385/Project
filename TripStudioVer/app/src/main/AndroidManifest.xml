@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mytrip"
-    android:versionCode="1"
-    android:versionName="1.0" >
+     >
 
-    <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
+    <!--***************高德地图***************-->
+
+    <!--允许程序打开网络套接字-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--允许程序设置内置sd卡的写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序获取网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--***************高德地图 End***************-->
+
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- qq登陆所需 权限-->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -53,6 +67,9 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="u2nNVGDxyTk1b3UEkSjUMphy" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="3f44903c281390a1913bb6f84aa67436"/>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -63,10 +80,15 @@
             android:label="@string/app_name" >
 
         </activity>
+
+        <activity android:name=".ui.SightDetailAct"/>
+
+        <activity android:name=".ui.TestSearchAct"/>
+        <activity android:name=".ui.BaiduSearch"/>
         <activity android:name="com.example.mytrip.ui.login.ActGuide">
 
         </activity>
-        <activity android:name="com.example.mytrip.ui.PreWelcomeActivity">
+        <activity android:name="com.example.mytrip.ui.login.ActLaunch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

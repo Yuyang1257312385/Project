@@ -15,13 +15,16 @@ import com.example.mytrip.ui.footprint.FootPrintActivity;
 import com.example.mytrip.ui.fragment.NearByFragment;
 import com.example.mytrip.ui.fragment.NewsFragment;
 import com.example.mytrip.ui.fragment.PostFragment;
+import com.example.mytrip.ui.fragment.SightListFragment;
+import com.example.mytrip.ui.fragment.StrategyFragment;
 import com.example.mytrip.ui.slideactivity.ExerciseActivity;
 import com.example.mytrip.view.XCRoundImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
-import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
+
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.slidingmenu.lib.SlidingMenu;
 import android.os.Bundle;
 import android.content.Intent;
@@ -43,47 +46,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-/**
- * �����涯̬��fragmentʱ��Ҫ�̳�FragmentActivity
- * */
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener,OnClickListener{//ע��˴����ð�
-  //����
-	private List<Fragment> fragments;//�ü������������Ƭ
-	//private StrategyFragment mMainFragment;
-	private NewsFragment mMainFragment;
+
+	private List<Fragment> fragments;
+	private SightListFragment mMainFragment;
 	private NewsFragment mNewsFragment;
 	private PostFragment mPostFragment;
 	private NearByFragment mNearByFragment;
 	private RadioGroup mRG;
 	private TextView mTitleTv;
-	private ImageView mUserHeadIv;//�������ͷ��
-	private View 
-	    mUserHeadRl,//ͷ��
-	    mFootPrintRl,//��ӡ
-	    mCollectRl,//�ղ�
-	    mDownloadMap,//����
-	    mExerciseRl,//�
-	    mSetRl,//����
-	    mFeedBackRl;//����
+	private ImageView mUserHeadIv;
+	private View mUserHeadRl, mFootPrintRl, mCollectRl, mDownloadMap,
+	    mExerciseRl, mSetRl, mFeedBackRl;
 	
 	
-	private XCRoundImageView mLeftHeadIv;//�໬���ͷ��
-	private Button mLoginBtn;//��¼��ť
-	private TextView mUserNameTv;//��ʾ�û���
+	private XCRoundImageView mLeftHeadIv;
+	private Button mLoginBtn;
+	private TextView mUserNameTv;
 	private SlidingMenu mLeftMenu ;
 	private Button mPostBtn;
 	private long exitTime;
 	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
-	private DisplayImageOptions options;//����ͼƬ���ʲ���
+	private DisplayImageOptions options;
 	@Override
 		protected void onCreate(Bundle arg0) {
-			// TODO Auto-generated method stub
 			super.onCreate(arg0);
 			requestWindowFeature(Window.FEATURE_NO_TITLE);
 			setContentView(R.layout.activity_main);
-			//��ʼ���ؼ�
+
 			initView();
 			
 			slideOut();
@@ -92,37 +84,31 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
         
 		private void slideOut() {
 			mLeftMenu = new SlidingMenu(this);
-			// �˵�����
+
 			mLeftMenu.setMode(SlidingMenu.LEFT);
-			// ���û�������Ļ��Χ
-			mLeftMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);//�����໬�˵���λ�òſ��Ի������໬�˵�
-			// menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);//���������໬�˵��Ĺ���ʧЧ
-			// �˵�����Ļ��һ�ߵĿ��
+			mLeftMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+			// menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 			mLeftMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-			// ����ʱ�Ľ���̶�
-			mLeftMenu.setFadeDegree(1.0f);//��ֵΪ1.0f������ʼʱ�໬�˵���ȫ���أ����������н�����ʾ����
-			// ���ڵ�ǰActivity
+			mLeftMenu.setFadeDegree(1.0f);
 			mLeftMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-	                // �Զ��岼�֣���ʾ�Լ��໬�˵�Ҫ��ʾ�Ĳ���
 			View view = LayoutInflater.from(this).inflate(R.layout.left_menu,null);
 			mLeftMenu.setMenu(view);
 //			mFeedBackRl=findViewById(R.id.rl_feed_back);
 //			mFeedBackRl.setOnClickListener(this);
-			//�໬����
-			mUserHeadRl=findViewById(R.id.rl_user_head);//ͷ��
-		    mFootPrintRl=findViewById(R.id.rl_foot_print);//��ӡ
-		    mCollectRl=findViewById(R.id.rl_collect);//�ղ�
-		    mDownloadMap=findViewById(R.id.rl_download_map);//����
-		    mExerciseRl=findViewById(R.id.rl_exercise);//�
-		    mSetRl=findViewById(R.id.rl_set);//����
-		    mFeedBackRl=findViewById(R.id.rl_feed_back);//����
-		    mUserHeadRl.setOnClickListener(this);//ͷ��
-		    mFootPrintRl.setOnClickListener(this);//��ӡ
-		    mCollectRl.setOnClickListener(this);//�ղ�
-		    mDownloadMap.setOnClickListener(this);//����
-		    mExerciseRl.setOnClickListener(this);//�
-		    mSetRl.setOnClickListener(this);//����
-		    mFeedBackRl.setOnClickListener(this);//����
+			mUserHeadRl=findViewById(R.id.rl_user_head);
+		    mFootPrintRl=findViewById(R.id.rl_foot_print);
+		    mCollectRl=findViewById(R.id.rl_collect);
+		    mDownloadMap=findViewById(R.id.rl_download_map);
+		    mExerciseRl=findViewById(R.id.rl_exercise);
+		    mSetRl=findViewById(R.id.rl_set);
+		    mFeedBackRl=findViewById(R.id.rl_feed_back);
+		    mUserHeadRl.setOnClickListener(this);
+		    mFootPrintRl.setOnClickListener(this);
+		    mCollectRl.setOnClickListener(this);
+		    mDownloadMap.setOnClickListener(this);
+		    mExerciseRl.setOnClickListener(this);
+		    mSetRl.setOnClickListener(this);
+		    mFeedBackRl.setOnClickListener(this);
 		    mLeftHeadIv=(XCRoundImageView) findViewById(R.id.iv_head_img);
 		    mLeftHeadIv.setOnClickListener(this);
 		    mUserHeadIv=(ImageView) findViewById(R.id.iv_user_head);
@@ -138,19 +124,16 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 			.cacheOnDisc(true)
 			.considerExifParams(true)
 			//.displayer(new RoundedBitmapDisplayer(20))
-			//.displayer(new CircleBitmapDisplayer())//���������Ϊ����ͼ�������ΪԲ��ͼ
+			//.displayer(new CircleBitmapDisplayer())
 			.build();
 	 }
-	/**
-	 * ��ʼ���ؼ�
-	 * */
+
 	private void initView() {
 		// TODO Auto-generated method stub
 		
 		fragments=new ArrayList<Fragment>();
-		//fragment����ֱ��new
 		//mMainFragment=new StrategyFragment();
-		mMainFragment=new NewsFragment();
+		mMainFragment=new SightListFragment();
 		mNewsFragment=new NewsFragment();
 		mPostFragment=new PostFragment();
 		mNearByFragment=new NearByFragment();
@@ -162,15 +145,13 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 		mRG=(RadioGroup) findViewById(R.id.rg_select);
 		mRG.setOnCheckedChangeListener(this);
 		mTitleTv=(TextView) findViewById(R.id.tv_title);
-		mTitleTv.setText("��ҳ");
+		mTitleTv.setText("");
 //	         	mLeftMenu = (SlidingMenu) findViewById(R.id.id_menu);
 		mPostBtn=(Button) findViewById(R.id.btn_post);
 		mPostBtn.setOnClickListener(this);
 		
 	}
-	/**
-	 * ����û���Ϣ
-	 * */
+
 	public void getUserInfo(){
 		MyUser mUser=BmobUser.getCurrentUser(MainActivity.this,MyUser.class);
 		if(mUser!=null){
@@ -186,29 +167,25 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 			mLoginBtn.setVisibility(View.VISIBLE);
 		}
 	}
-	/**
-	 * ��ʾfragment  ��һ������Ϊ��ʾ���������id,�ڶ�������ΪҪ��ʾ��fragment
-	 * */
+
 	public void showFragment(int id,Fragment fragment) {
-		FragmentManager manager=getSupportFragmentManager();//ע��˴�����v4��
+		FragmentManager manager=getSupportFragmentManager();
 		FragmentTransaction transaction=manager.beginTransaction();
 		transaction.replace(id,fragment);
 		transaction.commit();
 	}
 	@Override
 	public void onCheckedChanged(RadioGroup arg0, int id) {
-		// TODO Auto-generated method stub
 		switch (id) {
 		case R.id.rb_main:
 			showFragment(R.id.frameLayout1, fragments.get(0));
 			mUserHeadIv.setVisibility(View.VISIBLE);
 			mTitleTv.setVisibility(View.VISIBLE);
-			mTitleTv.setText("��ҳ");
+			mTitleTv.setText("");
 			mPostBtn.setVisibility(View.INVISIBLE);
 			break;
 		case R.id.rb_news:
 			showFragment(R.id.frameLayout1, fragments.get(1));
-			//mTitleTv.setText("����");
 			mUserHeadIv.setVisibility(View.GONE);
 			mTitleTv.setVisibility(View.GONE);
 			mPostBtn.setVisibility(View.GONE);
@@ -219,10 +196,10 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 				showFragment(R.id.frameLayout1, fragments.get(2));
 				mUserHeadIv.setVisibility(View.VISIBLE);
 				mTitleTv.setVisibility(View.VISIBLE);
-				mTitleTv.setText("��̬");
+				mTitleTv.setText("");
 				mPostBtn.setVisibility(View.VISIBLE);
 			}else{
-				Toast.makeText(this, "���ȵ�¼", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "", Toast.LENGTH_LONG).show();
 			}
 			
 			break;
@@ -230,7 +207,6 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 			showFragment(R.id.frameLayout1, fragments.get(3));
 			mUserHeadIv.setVisibility(View.GONE);
 			mTitleTv.setVisibility(View.GONE);
-			//mTitleTv.setText("����");
 			mPostBtn.setVisibility(View.GONE);
 			break;
 		
@@ -238,14 +214,12 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 			break;
 		}
 	}
-	/*
-	 * ������ת
-	 */
+
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.iv_user_head://ͷ��
+		case R.id.iv_user_head:
 			mLeftMenu.toggle();
 			break;
 		case R.id.iv_head_img:
@@ -256,26 +230,26 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 			Intent intentMap=new Intent(MainActivity.this,MapOfflineActivity.class);
 			startActivity(intentMap);
 			break;
-		case R.id.rl_exercise://�
+		case R.id.rl_exercise:
 			Intent intent6=new Intent(MainActivity.this,ExerciseActivity.class);
 			startActivity(intent6);
 			break;
-		case R.id.rl_set://����
+		case R.id.rl_set:
 			Intent intent7=new Intent(MainActivity.this,SetActivity.class);
 			startActivity(intent7);
 			break;
-		case R.id.rl_feed_back://����
+		case R.id.rl_feed_back:
 			BmobUser user=new BmobUser();
 			if (user!=null) {
 				//todo 报错 暂时注掉
 //				Intent intent8=new Intent(MainActivity.this,FeedBackActivity.class);
 //				startActivity(intent8);
 			}else{
-				Toast.makeText(this, "���¼", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "", Toast.LENGTH_LONG).show();
 			}
 			
 			break;
-		case R.id.btn_post://����˵˵
+		case R.id.btn_post:
 			Intent intent1=new Intent(MainActivity.this,PublishPostActivity.class);
 			startActivity(intent1);	
 		    break;
@@ -292,9 +266,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 		}
 		
 	}
-	/**
-	 * �໬
-	 * */
+
 	public void toggleMenu(View view)
 	{
 		mLeftMenu.toggle();

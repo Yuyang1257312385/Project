@@ -66,17 +66,14 @@ public class ActGuide extends ActBase implements OnPageChangeListener,OnClickLis
 		mPoints = new View[mData.size()];
 		for (int i = 0; i < mPoints.length; i++) {
 			View view = new View(this);
+			view.setLayoutParams(new LayoutParams(25, 25));
+			mPoints[i] = view;
 			if (i == 0) {
-				view.setLayoutParams(new LayoutParams(25, 25));
 				view.setBackgroundResource(R.drawable.red_heart);
-				mPoints[i] = view;
-				viewGroup.addView(view);
 			} else {
-				view.setLayoutParams(new LayoutParams(25, 25));
 				view.setBackgroundResource(R.drawable.white_heart);
-				mPoints[i] = view;
-				viewGroup.addView(view);
 			}
+			viewGroup.addView(view);
 		}
 	}
 
@@ -104,7 +101,6 @@ public class ActGuide extends ActBase implements OnPageChangeListener,OnClickLis
 				} else {
 					mPoints[i].setBackgroundResource(R.drawable.white_heart);
 					mStartBtn.setVisibility(View.GONE);
-
 				}
 			}
 		}

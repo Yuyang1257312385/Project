@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.lyj.mytripstudiover1"
+        applicationId "com.lyj.mytrip"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -20,6 +20,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
     }
 }
 
@@ -31,4 +32,11 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'com.orhanobut:logger:1.15'
+
+    compile 'com.amap.api:search:latest.integration'//高德地图 搜索
+    compile 'com.lzy.net:okgo:2.1.4'        //可以单独使用，不需要依赖下方的扩展包
+    compile 'com.alibaba:fastjson:1.1.54.android'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.marshalchen.ultimaterecyclerview:library:0.7.2'
+
 }

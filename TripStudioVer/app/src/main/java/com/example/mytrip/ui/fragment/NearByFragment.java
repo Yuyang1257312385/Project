@@ -23,9 +23,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class NearByFragment extends Fragment implements OnClickListener,OnItemClickListener{
-   //����
 	private Context mContext;
-	private EditText mSearchEt;//������
+	private EditText mSearchEt;
 	private ImageView mSearchIv;//����ͼ��
 	private GridView mServiceGv;//���񲼾�
 	private List<NearByBean> list = new ArrayList<NearByBean>();
@@ -39,9 +38,8 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	inti(v);
 	   return v;
 }
-	//��ʼ��
 	public void inti(View v) {
-		mContext=getActivity();//������fragment,��Ϊ����д��
+		mContext=getActivity();
 		mSearchEt=(EditText) v.findViewById(R.id.et_search);
 		mSearchIv=(ImageView) v.findViewById(R.id.iv_search);
 		mServiceGv=(GridView) v.findViewById(R.id.gv_near_by);
@@ -58,36 +56,22 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	private void setList() {
 		// TODO Auto-generated method stub
 		list.clear();
-		list.add(new NearByBean(R.drawable.dinner, "��ʳ"));
-		list.add(new NearByBean(R.drawable.mall, "����"));
-		list.add(new NearByBean(R.drawable.hotel, "����"));
-		list.add(new NearByBean(R.drawable.bar, "�ư�"));
+		list.add(new NearByBean(R.drawable.dinner, "餐饮"));
+		list.add(new NearByBean(R.drawable.mall, "商店"));
+		list.add(new NearByBean(R.drawable.hotel, "酒店"));
+		list.add(new NearByBean(R.drawable.bar, "酒吧"));
 		list.add(new NearByBean(R.drawable.ktv, "KTV"));
-		list.add(new NearByBean(R.drawable.cinema, "ӰԺ"));
-		list.add(new NearByBean(R.drawable.bank, "����"));
+		list.add(new NearByBean(R.drawable.cinema, "电影院"));
+		list.add(new NearByBean(R.drawable.bank, "银行"));
 		list.add(new NearByBean(R.drawable.atm, "ATM"));
-		list.add(new NearByBean(R.drawable.scenic, "����"));
+		list.add(new NearByBean(R.drawable.scenic, "景点"));
 	}
-    /**
-     * ��һ��������parent�൱�ڶ�Ӧ��������һ��ָ�룬����ͨ�������������װ�ŵ�һ�ж�����
-     * ��ͨ�׵����˵�����㣬��������һ��listview��grigview;
 
-	   �ڶ��������� view�����b item��view�ľ������������������view�������b��Ŀؼ���id������ؼ�
-
-	������������int position,    // position������item�ڶ�Ӧlistview(gridview)���������λ��
-	  ������listviewʱ��������һ��һ������item��Ȼ������ǰ�˳���źöӣ��ڷŵ�listview�
-	  ��˼�������b�ǵ�position�����õģ�
-
-	���ĸ������� long id     // id������item��listview��ĵڼ��е�λ�ã�
-	 �󲿷�ʱ��position��id��ֵ��һ����
-	
-     * */
 	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		// TODO Auto-generated method stub
 		Intent intent=new Intent(mContext,MapActivity.class);
-		//�������item������ͨ��intent���ݵ���ͼ����
 		intent.putExtra("whichItem", list.get(position).getContent().toString().trim());
 		startActivity(intent);
 	}

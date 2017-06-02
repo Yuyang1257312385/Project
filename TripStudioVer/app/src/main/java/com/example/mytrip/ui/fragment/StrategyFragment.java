@@ -64,7 +64,6 @@ public class StrategyFragment extends ListFragment{
 //	@Override
 //	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //			Bundle savedInstanceState) {
-//		// ���4.0�Ժ����̲߳��ܷ���http������
 //		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
 //				.detectDiskReads().detectDiskWrites().detectNetwork()
 //				.penaltyLog().build());
