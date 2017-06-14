@@ -243,8 +243,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                 BmobUser user = new BmobUser();
                 if (user != null) {
                     //todo 报错 暂时注掉
-//				Intent intent8=new Intent(MainActivity.this,FeedBackActivity.class);
-//				startActivity(intent8);
+				Intent intent8=new Intent(MainActivity.this,FeedBackActivity.class);
+				startActivity(intent8);
                 } else {
                     Toast.makeText(this, "", Toast.LENGTH_LONG).show();
                 }
@@ -256,10 +256,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                 break;
             case R.id.rl_foot_print:
                 if (mIsLogin) {
-
+                    Intent intent2 = new Intent(MainActivity.this, FootPrintActivity.class);
+                    startActivity(intent2);
+                }else{
+                    ToastUtils.showShortToast("请先登录");
                 }
-                Intent intent2 = new Intent(MainActivity.this, FootPrintActivity.class);
-                startActivity(intent2);
+
                 break;
             case R.id.btn_login_rightnow:
                 Intent intentLogin = new Intent(MainActivity.this, LoginActivity.class);

@@ -66,9 +66,5 @@
         android:text="提   交"
         android:textColor="#8B668B" 
         android:textSize="20sp"/>
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-     android:id="@+id/pull_refresh_list"
-     android:layout_width="fill_parent"
-     android:layout_height="fill_parent" />
 
 </LinearLayout>

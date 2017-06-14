@@ -102,8 +102,11 @@ public class PostFragment extends Fragment {
 		});
 	}
 	/**
-	 * 参数为帖子的集合，先查询出所有评论，然后根据帖子的id与帖子的集合做对比，最后获得一个评论的集合，该集合包括
-	 * 帖子作者，帖子内容，帖子时间,帖子对应的评论集合（每个评论又包括评论者和评论内容）,然后刷新适配器
+	 * 参数为帖子的集合，先查询出所有评论，
+	 * 然后根据帖子的id与帖子的集合做对比，
+	 * 最后获得一个评论的集合，该集合包括
+	 * 帖子作者，帖子内容，帖子时间,帖子对应的评论集合（每个评论又包括评论者和评论内容）,
+	 * 然后刷新适配器
 	 * */
 	private void getAllDataList(final List<PostBean> postBeanList) {
 		BmobQuery<Comments> query = new BmobQuery<Comments>();
@@ -197,7 +200,7 @@ public class PostFragment extends Fragment {
 		public void onReceive(Context arg0, Intent intent) {
 			//根据Action判断是谁发送的
 			String action = intent.getAction();
-			Toast.makeText(getActivity(), "广播接受成功", Toast.LENGTH_LONG).show();
+			ToastUtils.showShortToast("广播接受成功");
 			if(action.equals("com.example.myontheway01")){
 				//获取帖子及评论数据，并刷新适配器
 				getPostData();
