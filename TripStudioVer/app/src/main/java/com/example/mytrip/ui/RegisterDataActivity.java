@@ -1,6 +1,7 @@
 package com.example.mytrip.ui;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
 import android.app.Activity;
@@ -13,20 +14,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mytrip.R;
+import com.example.mytrip.tools.ToastUtils;
+import com.example.mytrip.ui.login.LoginActivity;
 
 public class RegisterDataActivity extends Activity implements OnClickListener {
-	private Button mFinishBtn;//��ɰ�ť
-    private EditText mUserNameEt,mPassword,mRePassword;//�û��������룬�ٴ��������������
+	private Button mFinishBtn;//完成按钮
+	private EditText mUserNameEt,mPassword,mRePassword;//用户名，密码，再次输入密码输入框
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_info);
-         intiView();
-		
+		intiView();
+
 	}
 	/**
-	 * ��ʼ���ؼ�
+	 * 初始化控件
 	 * */
 	private void intiView() {
 		// TODO Auto-generated method stub
@@ -37,7 +40,7 @@ public class RegisterDataActivity extends Activity implements OnClickListener {
 		mFinishBtn.setOnClickListener(this);
 	}
 	/**
-	 * ע���û�
+	 * 注册用户
 	 */
 	private void testSignUp(String name,String pwd) {
 		String number=getIntent().getStringExtra("number");
@@ -45,37 +48,31 @@ public class RegisterDataActivity extends Activity implements OnClickListener {
 		BmobUser.setUsername(name);
 		BmobUser.setPassword(pwd);
 		BmobUser.setMobilePhoneNumber(number);
-		BmobUser.signUp(this, new SaveListener() {
-
+		BmobUser.signUp(new SaveListener<Object>() {
 			@Override
-			public void onSuccess() {
-				// TODO Auto-generated method stub
-				toast("ע��ɹ�:" + BmobUser.getUsername() + "-"
-						+ BmobUser.getObjectId() + "-" + BmobUser.getCreatedAt()
-						+ "-" + BmobUser.getSessionToken()+",�Ƿ���֤��"+BmobUser.getEmailVerified());
-				Intent intent=new Intent(RegisterDataActivity.this,LoginActivity.class);
-				startActivity(intent);
-				finish();
-			}
-
-			@Override
-			public void onFailure(int code, String msg) {
-				// TODO Auto-generated method stub
-				toast("ע��ʧ��:" + msg);
+			public void done(Object o, BmobException e) {
+				if(e == null){
+					ToastUtils.showShortToast("注册成功:" + BmobUser.getUsername() + "-"
+							+ BmobUser.getObjectId() + "-" + BmobUser.getCreatedAt()
+							+ "-" + BmobUser.getSessionToken()+",是否验证："+BmobUser.getEmailVerified());
+					Intent intent=new Intent(RegisterDataActivity.this,LoginActivity.class);
+					startActivity(intent);
+					finish();
+				}else {
+					ToastUtils.showShortToast("注册失败:" + e.getErrorCode() + e.toString());
+				}
 			}
 		});
 	}
-	 //toast������������Ϣ
-		public void toast(String str){
-			Toast.makeText(RegisterDataActivity.this, str, Toast.LENGTH_LONG).show();
-		}
-	//��ת����¼����
+
+	//跳转到登录界面
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 		String username=mUserNameEt.getText().toString().trim();
 		String password=mPassword.getText().toString().trim();
 		testSignUp(username,password);
-		
+
 	}
+
 }

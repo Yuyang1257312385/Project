@@ -5,9 +5,7 @@
     android:layout_height="fill_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".ui.fragment.DongTaiFragment" >
-      
-    <include layout="@layout/loading"/>
+     >
 
     <ListView
         android:id="@+id/lv_post"

@@ -1,13 +1,14 @@
 package com.example.mytrip.ui.fragment;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -16,7 +17,7 @@ import android.widget.TextView;
 
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.example.mytrip.R;
-import com.example.mytrip.ui.SightDetailAct;
+import com.example.mytrip.ui.SightDetailActivity;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ import java.util.List;
  * Created by yu on 2017/6/2.
  */
 
-public class SightAdapter extends BaseAdapter {
+public class SightAdapter extends RecyclerView.Adapter<SightAdapter.ViewHolder> {
 
     private Context context;
     private List<PoiInfo> mData;
@@ -39,55 +40,28 @@ public class SightAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return mData != null ? mData.size() : 0;
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_sight,null);
+        ViewHolder viewHolder = new ViewHolder(view);
+        return viewHolder;
     }
 
     @Override
-    public Object getItem(int position) {
-        return mData.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder hoder;
-        if (convertView == null) {
-            convertView = View.inflate(context, R.layout.item_sight, null);
-            hoder = new ViewHolder();
-            hoder.mCityTv = (TextView) convertView.findViewById(R.id.tv_city);
-            hoder.mNameTv = (TextView) convertView.findViewById(R.id.tv_name);
-            hoder.mAddressTv = (TextView) convertView.findViewById(R.id.tv_address);
-            hoder.mPhoneNumTv = (TextView) convertView.findViewById(R.id.tv_phone_num);
-            hoder.mDetailBtn = (Button) convertView.findViewById(R.id.btn_detail);
-            convertView.setTag(hoder);
-        } else {
-            hoder = (ViewHolder) convertView.getTag();
-        }
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final PoiInfo poiInfo = mData.get(position);
-        hoder.mCityTv.setText(poiInfo.city);
-        hoder.mNameTv.setText(poiInfo.name);
-        hoder.mAddressTv.setText(poiInfo.address);
-        hoder.mPhoneNumTv.setText(poiInfo.phoneNum);
-        hoder.mPhoneNumTv.setOnClickListener(new View.OnClickListener() {
+        holder.mCityTv.setText(poiInfo.city);
+        holder.mNameTv.setText(poiInfo.name);
+        holder.mAddressTv.setText(poiInfo.address);
+        holder.mPhoneNumTv.setText(poiInfo.phoneNum);
+        holder.mPhoneNumTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String number = hoder.mPhoneNumTv.getText().toString().trim();
+                String number = poiInfo.phoneNum.trim();
                 if (!TextUtils.isEmpty(number)) {
                     Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (context.checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            // TODO: Consider calling
-                            //    Activity#requestPermissions
-                            // here to request the missing permissions, and then overriding
-                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                            //                                          int[] grantResults)
-                            // to handle the case where the user grants the permission. See the documentation
-                            // for Activity#requestPermissions for more details.
+
                             return;
                         }
                     }
@@ -96,18 +70,32 @@ public class SightAdapter extends BaseAdapter {
             }
         });
 
-        hoder.mDetailBtn.setOnClickListener(new View.OnClickListener() {
+        holder.mDetailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SightDetailAct.actionStart(context,poiInfo.uid);
+                SightDetailActivity.actionStart(context,poiInfo.uid);
             }
         });
-        return convertView;
     }
 
-    static class ViewHolder{
+
+    @Override
+    public int getItemCount() {
+       return mData != null ? mData.size() : 0;
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder{
         TextView mCityTv,mNameTv,mAddressTv,mPhoneNumTv;
         Button mDetailBtn;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mCityTv = (TextView) itemView.findViewById(R.id.tv_city);
+            mNameTv = (TextView) itemView.findViewById(R.id.tv_name);
+            mAddressTv = (TextView) itemView.findViewById(R.id.tv_address);
+            mPhoneNumTv = (TextView) itemView.findViewById(R.id.tv_phone_num);
+            mDetailBtn = (Button) itemView.findViewById(R.id.btn_detail);
+        }
     }
 
 

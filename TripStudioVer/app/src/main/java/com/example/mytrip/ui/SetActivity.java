@@ -10,8 +10,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.example.mytrip.R;
+import com.example.mytrip.tools.ToastUtils;
 import com.example.mytrip.ui.bmobdb.MyUser;
 import com.example.mytrip.tools.CacheUtils;
+import com.example.mytrip.ui.login.LoginActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -21,6 +23,7 @@ import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListene
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 
@@ -46,16 +49,16 @@ import android.widget.Toast;
 
 public class SetActivity extends Activity 
                   implements OnClickListener,OnCheckedChangeListener{
-	TextView logout;//�˳���¼
-	RelativeLayout iconLayout;//ͷ�񲼾�
-	ImageView userIcon;//�û�ͷ��
-	RelativeLayout nickLayout;//�ǳƲ���
-	TextView nickName;//�ǳ�
-	RelativeLayout signLayout;//����ǩ������
-	TextView signature;//����ǩ��
-	 private String targeturl;//ͼƬ�ڱ��صĵ�ַ
-	 boolean isLogin=false;
-	 CheckBox sexSwitch;
+	TextView logout;//退出登录
+	RelativeLayout iconLayout;//头像布局
+	ImageView userIcon;//用户头像
+	RelativeLayout nickLayout;//昵称布局
+	TextView nickName;//昵称
+	RelativeLayout signLayout;//个型签名布局
+	TextView signature;//个型签名
+	private String targeturl;//图片在本地的地址
+	boolean isLogin=false;
+	CheckBox sexSwitch;
 	static final int UPDATE_SEX = 11;
 	static final int UPDATE_ICON = 12;
 	static final int GO_LOGIN = 13;
@@ -63,29 +66,29 @@ public class SetActivity extends Activity
 	static final int EDIT_SIGN = 15;
 	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
-	private DisplayImageOptions options;//����ͼƬ���ʲ���
+	private DisplayImageOptions options;//设置图片访问参数
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-    	// TODO Auto-generated method stub
-    	super.onCreate(savedInstanceState);
-    	setContentView(R.layout.activity_set);
-    	options = new DisplayImageOptions.Builder()
-		.showImageOnLoading(R.drawable.ic_stub)
-		.showImageForEmptyUri(R.drawable.ic_empty)
-		.showImageOnFail(R.drawable.ic_error)
-		.cacheInMemory(true)
-		.cacheOnDisc(true)
-		.considerExifParams(true)
-		//.displayer(new RoundedBitmapDisplayer(20))
-		//.displayer(new CircleBitmapDisplayer())//���������Ϊ����ͼ�������ΪԲ��ͼ
-		.build();
-    	intiView();
-    	initPersonalInfo();
-    }
-    
-    /**
-     * ��ʼ���ؼ�
-     * */
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_set);
+		options = new DisplayImageOptions.Builder()
+				.showImageOnLoading(R.drawable.ic_stub)
+				.showImageForEmptyUri(R.drawable.ic_empty)
+				.showImageOnFail(R.drawable.ic_error)
+				.cacheInMemory(true)
+				.cacheOnDisc(true)
+				.considerExifParams(true)
+				//.displayer(new RoundedBitmapDisplayer(20))
+				//.displayer(new CircleBitmapDisplayer())//不加这个，为矩形图，加这个为圆形图
+				.build();
+		intiView();
+		initPersonalInfo();
+	}
+
+	/**
+	 * 初始化控件
+	 * */
 	protected void intiView() {
 		iconLayout = (RelativeLayout) findViewById(R.id.user_icon);
 		userIcon = (ImageView) findViewById(R.id.user_icon_image);
@@ -101,18 +104,18 @@ public class SetActivity extends Activity
 		signLayout.setOnClickListener(this);
 		sexSwitch.setOnCheckedChangeListener(this);
 	}
-	
+
 	private void initPersonalInfo() {
-		MyUser user = BmobUser.getCurrentUser(this, MyUser.class);
+		MyUser user = BmobUser.getCurrentUser(MyUser.class);
 		if (user != null) {
-			//�����ǳ�
+			//设置昵称
 			nickName.setText(user.getUsername());
-			//���ø���ǩ��
+			//设置个型签名
 			signature.setText(user.getSign());
 			isLogin=true;
 			BmobFile avatarFile = user.getHeadImage();
 			if (null != avatarFile) {
-				imageLoader.displayImage(avatarFile.getFileUrl(this),userIcon , options, animateFirstListener);
+				imageLoader.displayImage(avatarFile.getFileUrl(),userIcon , options, animateFirstListener);
 			}
 			if(user.getSex()!=null){
 				if (user.getSex().equals("male")) {
@@ -121,83 +124,85 @@ public class SetActivity extends Activity
 					sexSwitch.setChecked(false);
 				}
 			}
-			
-			logout.setText("�˳���¼");
+
+			logout.setText("退出登录");
 		} else {
-			logout.setText("��¼");
+			logout.setText("登录");
 		}
-		
+
 	}
-	
-	
+
+
 	//=====================================================
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		if (isChecked) {
 			MyUser mUser=new MyUser();
 			mUser.setSex("male");
-			MyUser bmobUser = BmobUser.getCurrentUser(this,MyUser.class);
-			mUser.update(this,bmobUser.getObjectId(),new UpdateListener() {
-			    @Override
-			    public void onSuccess() {
-			    	 Toast.makeText(SetActivity.this, "�޸ĳɹ�", Toast.LENGTH_LONG).show();
-			    }
-			    @Override
-			    public void onFailure(int code, String msg) {
-			       Toast.makeText(SetActivity.this, "�޸�ʧ��", Toast.LENGTH_LONG).show();
-			    }
+			MyUser bmobUser = BmobUser.getCurrentUser(MyUser.class);
+			mUser.update(bmobUser.getObjectId(),new UpdateListener() {
+				@Override
+				public void done(BmobException e) {
+					if(e == null){
+						ToastUtils.showShortToast( "修改成功");
+					}else {
+						ToastUtils.showShortToast( "修改失败"+ e.getErrorCode() + e.toString());
+					}
+				}
+
 			});
 		} else {
 			MyUser mUser=new MyUser();
 			mUser.setSex("female");
-			MyUser bmobUser = BmobUser.getCurrentUser(this,MyUser.class);
-			mUser.update(this,bmobUser.getObjectId(),new UpdateListener() {
-			    @Override
-			    public void onSuccess() {
-			    	 Toast.makeText(SetActivity.this, "�޸ĳɹ�", Toast.LENGTH_LONG).show();
-			    }
-			    @Override
-			    public void onFailure(int code, String msg) {
-			       Toast.makeText(SetActivity.this, "�޸�ʧ��", Toast.LENGTH_LONG).show();
-			    }
+			MyUser bmobUser = BmobUser.getCurrentUser(MyUser.class);
+			mUser.update(bmobUser.getObjectId(),new UpdateListener() {
+				@Override
+				public void done(BmobException e) {
+					if(e == null){
+						ToastUtils.showShortToast( "修改成功");
+					}else {
+						ToastUtils.showShortToast( "修改失败"+ e.getErrorCode() + e.toString());
+					}
+				}
+
 			});
 		}
-		
+
 	}
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.user_icon:
-	       
-			if(isLogin){
-				showAlbumDialog();
-			}else{
-				Intent intent=new Intent(this,LoginActivity.class);
-				startActivity(intent);
-			}
-	       		
-			break;
-		case R.id.user_logout:
-			if(logout.getText().toString().equals("�˳���¼")){
-				MyUser.logOut(this);
+			case R.id.user_icon:
+
+				if(isLogin){
+					showAlbumDialog();
+				}else{
+					Intent intent=new Intent(this,LoginActivity.class);
+					startActivity(intent);
+				}
+
+				break;
+			case R.id.user_logout:
+				if(logout.getText().toString().equals("退出登录")){
+					MyUser.logOut();
+					finish();
+					Intent intent1=new Intent(this,SetActivity.class);
+					startActivity(intent1);
+
+				}else{
+					Intent intent2=new Intent(this,LoginActivity.class);
+					startActivity(intent2);
+					finish();
+				}
+				break;
+			case R.id.user_sign:
+				Intent intent3=new Intent(this,EditSignActivity.class);
+				startActivity(intent3);
 				finish();
-				Intent intent1=new Intent(this,SetActivity.class);
-				startActivity(intent1);
-				
-			}else{
-				Intent intent2=new Intent(this,LoginActivity.class);
-				startActivity(intent2);
-				finish();
-			}
-			break;
-		case R.id.user_sign:
-			Intent intent3=new Intent(this,EditSignActivity.class);
-			startActivity(intent3);
-			finish();
-			break;
-		default:
-			break;
+				break;
+			default:
+				break;
 		}
 	}
 	String dateTime;
@@ -266,54 +271,54 @@ public class SetActivity extends Activity
 		super.onActivityResult(requestCode, resultCode, data);
 		if (resultCode == Activity.RESULT_OK) {
 			switch (requestCode) {
-			
-			case 1:
-				String files = CacheUtils.getCacheDirectory(this, true,
-						"icon") + dateTime;
-				File file = new File(files);
-				if (file.exists() && file.length() > 0) {
-					Uri uri = Uri.fromFile(file);
-					startPhotoZoom(uri);
-				} else {
 
-				}
-				break;
-			case 2:
-				if (data == null) {
-					return;
-				}
-				startPhotoZoom(data.getData());
-				break;
-			case 3:
-				if (data != null) {
-					Bundle extras = data.getExtras();
-					if (extras != null) {
-						Bitmap bitmap = extras.getParcelable("data");
-						targeturl = saveToSdCard(bitmap);
-						userIcon.setImageBitmap(bitmap);
-						updateIcon(targeturl);
+				case 1:
+					String files = CacheUtils.getCacheDirectory(this, true,
+							"icon") + dateTime;
+					File file = new File(files);
+					if (file.exists() && file.length() > 0) {
+						Uri uri = Uri.fromFile(file);
+						startPhotoZoom(uri);
+					} else {
+
 					}
-				}
-				break;
-			
-			default:
-				break;
+					break;
+				case 2:
+					if (data == null) {
+						return;
+					}
+					startPhotoZoom(data.getData());
+					break;
+				case 3:
+					if (data != null) {
+						Bundle extras = data.getExtras();
+						if (extras != null) {
+							Bitmap bitmap = extras.getParcelable("data");
+							targeturl = saveToSdCard(bitmap);
+							userIcon.setImageBitmap(bitmap);
+							updateIcon(targeturl);
+						}
+					}
+					break;
+
+				default:
+					break;
 			}
 		}
 	}
 	public void startPhotoZoom(Uri uri) {
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
-		
+
 		intent.putExtra("aspectX", 1);
 		intent.putExtra("aspectY", 1);
-		
+
 		intent.putExtra("outputX", 120);
 		intent.putExtra("outputY", 120);
 		intent.putExtra("crop", "true");
 		intent.putExtra("scale", true);
 		intent.putExtra("scaleUpIfNeeded", true);
-		
+
 		intent.putExtra("return-data", true);
 		startActivityForResult(intent, 3);
 
@@ -338,31 +343,13 @@ public class SetActivity extends Activity
 		return file.getAbsolutePath();
 	}
 	/**
-	 * �ϴ�����ͷ��
+	 * 上传更新头像
 	 * */
 	private void updateIcon(String avataPath) {
 		if (avataPath != null) {
-			final BmobFile file = new BmobFile(new File(avataPath));		
-			file.upload(this, new UploadFileListener() {
+			final BmobFile file = new BmobFile(new File(avataPath));
+			file.upload(new UploadFileListener() {
 
-				@Override
-				public void onSuccess() {
-					// TODO Auto-generated method stub
-					MyUser currentUser = BmobUser.getCurrentUser(SetActivity.this,MyUser.class);
-					currentUser.setHeadImage(file);
-					currentUser.update(SetActivity.this, new UpdateListener() {
-
-						@Override
-						public void onSuccess() {
-							Toast.makeText(SetActivity.this, "���ĳɹ�", Toast.LENGTH_LONG).show();
-						}
-						@Override
-						public void onFailure(int arg0, String arg1) {
-							// TODO Auto-generated method stub
-							Toast.makeText(SetActivity.this, "����ʧ��", Toast.LENGTH_LONG).show();	
-						}
-					});
-				}
 
 				@Override
 				public void onProgress(Integer arg0) {
@@ -371,9 +358,26 @@ public class SetActivity extends Activity
 				}
 
 				@Override
-				public void onFailure(int arg0, String arg1) {
-					
+				public void done(BmobException e) {
+					if(e == null){
+						MyUser currentUser = BmobUser.getCurrentUser(MyUser.class);
+						currentUser.setHeadImage(file);
+						currentUser.update(new UpdateListener() {
+
+							@Override
+							public void done(BmobException e) {
+								if(e == null){
+									ToastUtils.showShortToast("更改成功");
+								}else {
+									ToastUtils.showShortToast("更改失败" + e.getErrorCode() + e.toString());
+								}
+							}
+						});
+					}else {
+						ToastUtils.showShortToast("ecode = "+ e.getErrorCode() +e.toString());
+					}
 				}
+
 			});
 		}
 	}

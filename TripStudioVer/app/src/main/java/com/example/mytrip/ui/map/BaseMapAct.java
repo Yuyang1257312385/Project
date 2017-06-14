@@ -1,4 +1,4 @@
-package com.example.mytrip.ui;
+package com.example.mytrip.ui.map;
 
 import android.app.Activity;
 import android.content.Intent;

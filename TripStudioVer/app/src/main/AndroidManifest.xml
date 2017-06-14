@@ -57,6 +57,8 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
     <!--允许应用读取低级别的系统日志文件 -->
     <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo1"
@@ -81,21 +83,19 @@
 
         </activity>
 
-        <activity android:name=".ui.SightDetailAct"/>
+        <activity android:name=".ui.SightDetailActivity"/>
 
-        <activity android:name=".ui.TestSearchAct"/>
-        <activity android:name=".ui.BaiduSearch"/>
-        <activity android:name="com.example.mytrip.ui.login.ActGuide">
+        <activity android:name="com.example.mytrip.ui.login.GuideActivity">
 
         </activity>
-        <activity android:name="com.example.mytrip.ui.login.ActLaunch">
+        <activity android:name="com.example.mytrip.ui.login.LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.mytrip.ui.LoginActivity">
+        <activity android:name="com.example.mytrip.ui.login.LoginActivity">
 
 
         </activity>
@@ -124,7 +124,7 @@
         <activity android:name="com.example.mytrip.ui.PublishPostActivity"></activity>
         <activity android:name=".ui.slideactivity.ExerciseActivity"></activity>
         <activity android:name="com.example.mytrip.ui.MapOfflineActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.BaseMapAct"></activity>
+        <activity android:name="com.example.mytrip.ui.map.BaseMapAct"></activity>
         <activity android:name="com.example.mytrip.ui.MapInfoActivity"></activity>
         <activity android:name="com.example.mytrip.ui.MapNavigationActivity"></activity>
         <!--<activity android:name="FeedBackActivity"></activity>-->

@@ -11,7 +11,7 @@ import com.example.mytrip.tools.SPUtils;
  * Activity的基类
  */
 
-public class ActBase extends Activity {
+public class BaseActivity extends Activity {
 
     public SPUtils spUtils;
 

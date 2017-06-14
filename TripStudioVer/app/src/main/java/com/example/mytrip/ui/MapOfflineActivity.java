@@ -7,6 +7,7 @@ import com.baidu.mapapi.map.offline.MKOLUpdateElement;
 import com.baidu.mapapi.map.offline.MKOfflineMap;
 import com.baidu.mapapi.map.offline.MKOfflineMapListener;
 import com.example.mytrip.R;
+import com.example.mytrip.ui.map.BaseMapAct;
 
 import android.app.Activity;
 import android.content.Intent;

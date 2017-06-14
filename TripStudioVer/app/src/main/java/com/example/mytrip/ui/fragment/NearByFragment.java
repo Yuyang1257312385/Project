@@ -25,10 +25,10 @@ import android.widget.Toast;
 public class NearByFragment extends Fragment implements OnClickListener,OnItemClickListener{
 	private Context mContext;
 	private EditText mSearchEt;
-	private ImageView mSearchIv;//����ͼ��
-	private GridView mServiceGv;//���񲼾�
+	private ImageView mSearchIv;
+	private GridView mServiceGv;
 	private List<NearByBean> list = new ArrayList<NearByBean>();
-	private NearByGVAdapter adapter;//������
+	private NearByGVAdapter adapter;
 	//private NearByGvAdapter adapter;
 	@Override
 public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,9 +50,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 		mSearchIv.setOnClickListener(this);
 		mServiceGv.setOnItemClickListener(this);
 	}
-	/**
-	 * Ϊdata��ֵ
-	 * */
+
 	private void setList() {
 		// TODO Auto-generated method stub
 		list.clear();
@@ -84,7 +82,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			intent.putExtra("whichItem", content);
 			startActivity(intent);
 		}else{
-			Toast.makeText(getActivity(), "�������ݲ���Ϊ��",Toast.LENGTH_LONG).show();
+			Toast.makeText(getActivity(), "啥都没有",Toast.LENGTH_LONG).show();
 		}
 	}
 }

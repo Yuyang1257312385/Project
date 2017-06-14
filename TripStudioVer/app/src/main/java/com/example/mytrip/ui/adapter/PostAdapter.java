@@ -7,11 +7,14 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.listener.DeleteListener;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 import com.example.mytrip.R;
+import com.example.mytrip.tools.LogUtil;
+import com.example.mytrip.tools.ToastUtils;
 import com.example.mytrip.ui.bean.LikesBean;
 import com.example.mytrip.ui.bean.PostBean;
 import com.example.mytrip.ui.bmobdb.Comments;
@@ -55,49 +58,32 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 public class PostAdapter extends BaseAdapter {
-	private LayoutInflater inflater;
-	private Activity context;
-	private List<PostBean> postList;
-	private int expandPosition = -1;
+	private LayoutInflater inflater;// 筛选器
+	private Activity context;// 上下文，即相应的activity
+	private List<PostBean> postList;// 动态数据的集合
+	private int expandPosition = -1;// 用于发表评论框和按钮的显示和隐藏
 
-	private CommentAdapter commentAdapter;
+	private CommentAdapter commentAdapter;// 由于嵌套了一个评论的listView,故需要一个评论的适配器
 	private PopupWindow mPopupWindow;
+	// 屏幕的width
 	private int mScreenWidth;
+	// 屏幕的height
 	private int mScreenHeight;
+	// PopupWindow的width
 	private int mPopupWindowWidth;
+	// PopupWindow的height
 	private int mPopupWindowHeight;
-	String replyTo = "";
-	String replyContent = "";
+	String replyTo = "";// 回复那个人评论的昵称
+	String replyContent = "";// 回复的内容
 	Post post1 = new Post();
-	private EditText commentReplyEt;
-	private Button commentReplyBtn;
+	private EditText commentReplyEt;// 回复评论的输入框
+	private Button commentReplyBtn;// 提交回复的按钮
 	//==============
-	//private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
-	private ImageLoadingListener animateFirstListener = new ImageLoadingListener() {
-		@Override
-		public void onLoadingStarted(String s, View view) {
-
-		}
-
-		@Override
-		public void onLoadingFailed(String s, View view, FailReason failReason) {
-
-		}
-
-		@Override
-		public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-
-		}
-
-		@Override
-		public void onLoadingCancelled(String s, View view) {
-
-		}
-	};
+	private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 	protected ImageLoader imageLoader = ImageLoader.getInstance();
-	private DisplayImageOptions options;
-
+	private DisplayImageOptions options;//设置图片访问参数
 	//===========================
+	// 通过构造函数为声明的变量赋值
 	public PostAdapter(Activity context) {
 		super();
 		this.context = context;
@@ -110,10 +96,11 @@ public class PostAdapter extends BaseAdapter {
 				.cacheOnDisc(true)
 				.considerExifParams(true)
 				//.displayer(new RoundedBitmapDisplayer(20))
-				//.displayer(new CircleBitmapDisplayer())
+				//.displayer(new CircleBitmapDisplayer())//不加这个，为矩形图，加这个为圆形图
 				.build();
 	}
 
+	// 设置动态列表的数据
 	public void setPostList(List<PostBean> postList) {
 		this.postList = postList;
 	}
@@ -158,7 +145,7 @@ public class PostAdapter extends BaseAdapter {
 			// convertView.findViewById(R.id.iv_post_img);
 			viewHolder.postLikesTv = (TextView) convertView
 					.findViewById(R.id.tv_post_likes);
-			viewHolder.postLikeClickTv = (TextView) convertView
+			viewHolder.postLikeClickTv =(TextView) convertView
 					.findViewById(R.id.tv_like_or_not);
 			viewHolder.postCommentIv = (ImageView) convertView
 					.findViewById(R.id.iv_post_comment);
@@ -171,7 +158,7 @@ public class PostAdapter extends BaseAdapter {
 			// viewHolder.postCommentIv.setTag(position);
 			viewHolder.CommentView = LayoutInflater.from(context).inflate(
 					R.layout.item_comment, null);
-			viewHolder.postImage = (ImageView) convertView.findViewById(R.id.iv_post_img);
+			viewHolder.postImage=(ImageView) convertView.findViewById(R.id.iv_post_img);
 			convertView.setTag(viewHolder);
 
 		} else {
@@ -197,9 +184,9 @@ public class PostAdapter extends BaseAdapter {
 			viewHolder.postImage.setVisibility(View.GONE);
 		} else {
 			viewHolder.postImage.setVisibility(View.VISIBLE);
-			imageLoader.displayImage(postList.get(position).getPostImageUrl().getFileUrl(context) == null ? ""
+			imageLoader.displayImage(postList.get(position).getPostImageUrl().getFileUrl() == null ? ""
 					: postList.get(position).getPostImageUrl().getFileUrl(
-					context), viewHolder.postImage, options, animateFirstListener);
+					), viewHolder.postImage, options, animateFirstListener);
 			/*ImageLoader
 					.getInstance()
 					.displayImage(
@@ -214,59 +201,52 @@ public class PostAdapter extends BaseAdapter {
 		//=================================================================
 		// viewHolder.postIv.setBackgroundResource(R.drawable.img_1);
 		// viewHolder.postLikesTv.setText(postList.get(position).getLikes().toString());
-		//// TODO: 2017/5/24
-		//viewHolder.postLikeClickTv.setOnClickListener(new ClickOrder(position, viewHolder));
-		viewHolder.postLikeClickTv.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
+		viewHolder.postLikeClickTv.setOnClickListener(new ClickOrder(position,viewHolder));
+		String postLikeStr="";
 
-			}
-		});
-
-		String postLikeStr = "";
-
-		if (postList.get(position).getPostLikes() != null) {
+		if(postList.get(position).getPostLikes()!=null){
 //			viewHolder.postLikeBtn.setTag(postList.get(position).getPostLikes()!=null);
-//			
+//
 //				for(LikesBean likesBean:postList.get(position).getPostLikes()){
 //					BmobUser bUser=BmobUser.getCurrentUser(context);
 //					//if(postList.get(position).getPostLikes().equals(viewHolder.postLikeBtn.getTag())){
 //					if(likesBean.getLikeAuthorId().equals(bUser.getObjectId())){
-//		                viewHolder.postLikeBtn.setText("ȡ��");    
+//		                viewHolder.postLikeBtn.setText("取消");
 //						//break;
 //					}else{
-//						viewHolder.postLikeBtn.setText("����");
+//						viewHolder.postLikeBtn.setText("点赞");
 //					}
 //					//}
 //				}
-//			
+//
 
 
-			for (LikesBean likesBean : postList.get(position).getPostLikes()) {
-				postLikeStr += likesBean.getLikeAuthorName() + ",";
-				BmobUser bUser = BmobUser.getCurrentUser(context);
+			for(LikesBean likesBean:postList.get(position).getPostLikes()){
+				postLikeStr+=likesBean.getLikeAuthorName()+",";
+				BmobUser bUser=BmobUser.getCurrentUser();
 				//if(postList.get(position).getPostLikes().equals(viewHolder.postLikeBtn.getTag())){
-				if (likesBean.getLikeAuthorId().equals(bUser.getObjectId())) {
+				if(likesBean.getLikeAuthorId().equals(bUser.getObjectId())){
 					viewHolder.postLikeClickTv.setText("0");
 					//System.out.println(likesBean.getLikeAuthorId()+"======"+likesBean.getLikeAuthorName());
 					//break;
-				} else {
+				}else{
 					viewHolder.postLikeClickTv.setText("1");
 				}
 			}
 
 		}
-		if (!postLikeStr.equals("") && postLikeStr != null) {
-			viewHolder.postLikesTv.setText(postLikeStr + "sss");
+		if(!postLikeStr.equals("")&&postLikeStr!=null){
+			viewHolder.postLikesTv.setText(postLikeStr+"觉得很赞");
 
-		} else {
+		}else{
 			viewHolder.postLikesTv.setText("");
 
 		}
 
-		viewHolder.postCommentIv.setOnClickListener(new ClickOrder(position, viewHolder));
+		viewHolder.postCommentIv.setOnClickListener(new ClickOrder(position,viewHolder));
 		viewHolder.postCommentSubmitBtn.setOnClickListener(new ClickOrder(
-				position, viewHolder));
+				position,viewHolder));
+		// 设置评论框的显示和隐藏
 		if (expandPosition == position) {
 			viewHolder.postCommentEt.setVisibility(View.VISIBLE);
 			viewHolder.postCommentEt.requestFocus();
@@ -289,17 +269,17 @@ public class PostAdapter extends BaseAdapter {
 						replyTo = postList.get(position).getCommentList()
 								.get(arg2).getCommentAuthor();
 						post1.setObjectId(postList.get(position).getPostId());
-						//getPopupWindowInstance(position, viewHolder);
+						getPopupWindowInstance(position,viewHolder);
 
 						mPopupWindow.showAtLocation(v, Gravity.TOP, 0, 200);
 
-//						int[] location = new int[2];  
-//				        v.getLocationOnScreen(location);  			          
+//						int[] location = new int[2];
+//				        v.getLocationOnScreen(location);
 //				        mPopupWindow.showAtLocation(v,
-//				        		Gravity.NO_GRAVITY, location[0], 
+//				        		Gravity.NO_GRAVITY, location[0],
 //				        		location[1]-mPopupWindow.getHeight());
-						commentReplyEt.setHint("�ظ� " + replyTo);
-						commentReplyBtn.setText("ȡ��");
+						commentReplyEt.setHint("回复 " + replyTo);
+						commentReplyBtn.setText("取消");
 						commentAdapter.notifyDataSetChanged();
 					}
 				});
@@ -309,20 +289,53 @@ public class PostAdapter extends BaseAdapter {
 
 	}
 
+	/**
+	 * 存放item中各个控件的类
+	 * */
+	public class ViewHolder {
+		// private ImageView userHeadIv;//用户头像
+		private TextView userNameTv;// 用户名
+		private TextView postTimeTv;// 发表动态时间
+		private TextView postContentTv;// 动态的内容
+		// private ImageView postIv;//动态的图片
+		private TextView postLikeClickTv;// 点赞（作用为按钮）
+		private TextView postLikesTv;// 点赞的人
+		private ImageView postCommentIv;// 评论（作用为按钮）
+		private EditText postCommentEt;// 评论内容输入框
+		private Button postCommentSubmitBtn;// 提交评论内容按钮
+		private MyListView postCommentsLv;// 评论的listview
+		private View CommentView;// 评论的item
+		private ImageView postImage;//动态中的图片
+	}
+	private static class AnimateFirstDisplayListener extends SimpleImageLoadingListener {
 
+		static final List<String> displayedImages = Collections.synchronizedList(new LinkedList<String>());
+
+		@Override
+		public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+			if (loadedImage != null) {
+				ImageView imageView = (ImageView) view;
+				boolean firstDisplay = !displayedImages.contains(imageUri);
+				if (firstDisplay) {
+					FadeInBitmapDisplayer.animate(imageView, 500);
+					displayedImages.add(imageUri);
+				}
+			}
+		}
+	}
 	class ClickOrder implements OnClickListener {
 		public int position;
 		public ViewHolder viewHolder;
-
-		public ClickOrder(int position, ViewHolder viewHolder) {
+		public ClickOrder(int position,ViewHolder viewHolder) {
 			this.position = position;
-			this.viewHolder = viewHolder;
+			this.viewHolder=viewHolder;
 		}
 
 		@Override
 		public void onClick(View v) {
 
 			switch (v.getId()) {
+				// 点击评论图标，将评论框和评论按钮设置为可见
 				case R.id.iv_post_comment:
 					if (expandPosition == position) {
 						expandPosition = -1;
@@ -331,8 +344,9 @@ public class PostAdapter extends BaseAdapter {
 					}
 					notifyDataSetChanged();
 					break;
+				// 点击提交评论按钮,将评论框和评论按钮隐藏，将数据存入到bmob
 				case R.id.btn_comment_submit:
-					BmobUser commentAuthor = BmobUser.getCurrentUser(context);
+					BmobUser commentAuthor = BmobUser.getCurrentUser();
 					String commentContent = viewHolder.postCommentEt.getText()
 							.toString().trim();
 					Post post = new Post();
@@ -341,21 +355,22 @@ public class PostAdapter extends BaseAdapter {
 					comments.setCommentAuthor(commentAuthor);
 					comments.setPost(post);
 					comments.setCommentContent(commentContent);
-					comments.save(context, new SaveListener() {
+					comments.save(new SaveListener<String>() {
 						@Override
-						public void onSuccess() {
-							Toast.makeText(context, "���۳ɹ�", Toast.LENGTH_LONG)
-									.show();
-							Intent mIntent = new Intent("com.example.myontheway01");
-							context.sendBroadcast(mIntent);
-						}
-
-						@Override
-						public void onFailure(int code, String msg) {
-							Toast.makeText(context, "����ʧ��", Toast.LENGTH_LONG)
-									.show();
-							Intent mIntent = new Intent("com.example.myontheway01");
-							context.sendBroadcast(mIntent);
+						public void done(String s, BmobException e) {
+							if(e == null){
+								Toast.makeText(context, "评论成功", Toast.LENGTH_LONG)
+										.show();
+								// 用Activity可以调用发送广播的方法
+								Intent mIntent = new Intent("com.example.myontheway01");// 通过指定发送的频道
+								context.sendBroadcast(mIntent);
+							}else {
+								Toast.makeText(context, "评论失败", Toast.LENGTH_LONG)
+										.show();
+								Intent mIntent = new Intent("com.example.myontheway01");// 通过指定发送的频道
+								context.sendBroadcast(mIntent);
+								LogUtil.d("LYJ",e.toString());
+							}
 						}
 					});
 					if (expandPosition == position) {
@@ -366,75 +381,74 @@ public class PostAdapter extends BaseAdapter {
 					notifyDataSetChanged();
 					break;
 				case R.id.btn_reply_comment:
-					if (commentReplyBtn.getText().equals("�ύ")) {
-						BmobUser replyAuthor = BmobUser.getCurrentUser(context);
+					if (commentReplyBtn.getText().equals("提交")) {
+						BmobUser replyAuthor = BmobUser.getCurrentUser();
 						replyContent = commentReplyEt.getText().toString().trim();
 						Comments replyComment = new Comments();
 						replyComment.setCommentAuthor(replyAuthor);
 						replyComment.setPost(post1);
 						replyComment.setCommentContent(replyContent);
 						replyComment.setReplyTo(replyTo);
-						replyComment.save(context, new SaveListener() {
+						replyComment.save(new SaveListener<String>() {
 							@Override
-							public void onSuccess() {
-								Toast.makeText(context, "���۳ɹ�", Toast.LENGTH_LONG)
-										.show();
-								commentReplyEt.setText("");
-								Intent mIntent = new Intent(
-										"com.example.myontheway01");
-								context.sendBroadcast(mIntent);
-							}
-
-							@Override
-							public void onFailure(int code, String msg) {
-								Toast.makeText(context, "����ʧ��", Toast.LENGTH_LONG)
-										.show();
-								commentReplyEt.setText("");
-								Intent mIntent = new Intent(
-										"com.example.myontheway01");
-								context.sendBroadcast(mIntent);
+							public void done(String s, BmobException e) {
+								if(e == null){
+									Toast.makeText(context, "评论成功", Toast.LENGTH_LONG)
+											.show();
+									commentReplyEt.setText("");
+									// 用Activity可以调用发送广播的方法
+									Intent mIntent = new Intent(
+											"com.example.myontheway01");// 通过指定发送的频道
+									context.sendBroadcast(mIntent);
+								}else {
+									Toast.makeText(context, "评论失败", Toast.LENGTH_LONG)
+											.show();
+									commentReplyEt.setText("");
+									Intent mIntent = new Intent(
+											"com.example.myontheway01");// 通过指定发送的频道
+									context.sendBroadcast(mIntent);
+									LogUtil.d("LYJ",e.toString());
+								}
 							}
 						});
-
 						mPopupWindow.dismiss();
-					} else if (commentReplyBtn.getText().equals("ȡ��")) {
-						Toast.makeText(context, "ȡ���ظ�", Toast.LENGTH_LONG).show();
+					} else if (commentReplyBtn.getText().equals("取消")) {
+						Toast.makeText(context, "取消回复", Toast.LENGTH_LONG).show();
 						mPopupWindow.dismiss();
 					}
 					break;
 				case R.id.tv_like_or_not:
-					if (viewHolder.postLikeClickTv.getText().equals("1")) {
-						BmobUser user = BmobUser.getCurrentUser(context);
+					if(viewHolder.postLikeClickTv.getText().equals("1")){
+						BmobUser user = BmobUser.getCurrentUser();
 						Post post1 = new Post();
 						post1.setObjectId(postList.get(position).getPostId());
 						final Likes likes = new Likes();
 						likes.setLikeAuthor(user);
 						likes.setPost(post1);
-						likes.save(context, new SaveListener() {
-
+						likes.save(new SaveListener<String>() {
 							@Override
-							public void onSuccess() {
-								Toast.makeText(context, "���޳ɹ�", Toast.LENGTH_LONG).show();
-								// viewHolder.postLikeBtn.setText("ȡ��");
-								Intent mIntent = new Intent(
-										"com.example.myontheway01");// ͨ��ָ�����͵�Ƶ��
-								context.sendBroadcast(mIntent);
-							}
-
-							@Override
-							public void onFailure(int code, String msg) {
-								Toast.makeText(context, "����ʧ��", Toast.LENGTH_LONG).show();
-								Intent mIntent = new Intent(
-										"com.example.myontheway01");// ͨ��ָ�����͵�Ƶ��
-								context.sendBroadcast(mIntent);
+							public void done(String s, BmobException e) {
+								if(e == null){
+									Toast.makeText(context, "点赞成功", Toast.LENGTH_LONG).show();
+									// viewHolder.postLikeBtn.setText("取消");
+									Intent mIntent = new Intent(
+											"com.example.myontheway01");// 通过指定发送的频道
+									context.sendBroadcast(mIntent);
+								}else {
+									Toast.makeText(context, "点赞失败", Toast.LENGTH_LONG).show();
+									Intent mIntent = new Intent(
+											"com.example.myontheway01");// 通过指定发送的频道
+									context.sendBroadcast(mIntent);
+									LogUtil.d("LYJ",e.toString());
+								}
 							}
 						});
 
-					} else if (viewHolder.postLikeClickTv.getText().equals("0")) {
-
-						BmobUser bUser = BmobUser.getCurrentUser(context);
-						String postId = postList.get(position).getPostId();
-						getLikesId(bUser, postId);
+					}else if(viewHolder.postLikeClickTv.getText().equals("0")){
+						//根据当前用户和帖子id查出点赞的id并删除
+						BmobUser bUser=BmobUser.getCurrentUser();
+						String postId=postList.get(position).getPostId();
+						getLikesId(bUser,postId);
 					}
 					break;
 				default:
@@ -442,239 +456,198 @@ public class PostAdapter extends BaseAdapter {
 			}
 		}
 
-		/**
-		 * */
-		private void getLikesId(BmobUser bUser, String postId) {
-
-
-			BmobQuery<Likes> eq1 = new BmobQuery<Likes>();
-			BmobUser bmobUser = new BmobUser();
-			bmobUser.setObjectId(bUser.getObjectId());
-			eq1.addWhereEqualTo("likeAuthor", bmobUser);
-			BmobQuery<Likes> eq2 = new BmobQuery<Likes>();
-			Post post = new Post();
-			post.setObjectId(postId);
-			eq2.addWhereEqualTo("post", post);
-			//�����װ������and����
-			List<BmobQuery<Likes>> andQuerys = new ArrayList<BmobQuery<Likes>>();
-			andQuerys.add(eq1);
-			andQuerys.add(eq2);
-			BmobQuery<Likes> query = new BmobQuery<Likes>();
-			query.and(andQuerys);
-			query.findObjects(context, new FindListener<Likes>() {
-				@Override
-				public void onSuccess(List<Likes> object) {
-					// TODO Auto-generated method stub
-					String likesId = "";
-					for (Likes likes : object) {
-						likesId = likes.getObjectId();
-					}
-					deleteLikesById(likesId);
-				}
-
-				@Override
-				public void onError(int code, String msg) {
-					Toast.makeText(context, "��ѯʧ��", Toast.LENGTH_LONG).show();
-
-				}
-			});
-		}
-
-		/**
-		 * */
-		public void deleteLikesById(String likesId) {
-			Likes likes = new Likes();
-			likes.setObjectId(likesId);
-			likes.delete(context, new DeleteListener() {
-
-				@Override
-				public void onSuccess() {
-					// TODO Auto-generated method stub
-					Toast.makeText(context, "ȡ���ɹ�", Toast.LENGTH_LONG).show();
-					Intent mIntent = new Intent(
-							"com.example.myontheway01");
-					context.sendBroadcast(mIntent);
-
-				}
-
-				@Override
-				public void onFailure(int code, String msg) {
-					// TODO Auto-generated method stub
-					Toast.makeText(context, "ȡ��ʧ��", Toast.LENGTH_LONG).show();
-					Intent mIntent = new Intent(
-							"com.example.myontheway01");
-					context.sendBroadcast(mIntent);
-				}
-			});
-		}
 	}
 	/**
+	 * 通过当前用户和帖子ID获取点赞id
 	 * */
-	public class ViewHolder {
-		// private ImageView userHeadIv;
-		private TextView userNameTv;
-		private TextView postTimeTv;
-		private TextView postContentTv;
-		// private ImageView postIv;
-		private TextView postLikeClickTv;
-		private TextView postLikesTv;
-		private ImageView postCommentIv;
-		private EditText postCommentEt;
-		private Button postCommentSubmitBtn;
-		private MyListView postCommentsLv;
-		private View CommentView;
-		private ImageView postImage;
+	private void getLikesId(BmobUser bUser,String postId){
 
-		private  class AnimateFirstDisplayListener extends SimpleImageLoadingListener {
-
-			 final List<String> displayedImages = Collections.synchronizedList(new LinkedList<String>());
-
+		//--and条件1
+		BmobQuery<Likes> eq1 = new BmobQuery<Likes>();
+		BmobUser bmobUser=new BmobUser();
+		bmobUser.setObjectId(bUser.getObjectId());
+		eq1.addWhereEqualTo("likeAuthor", bmobUser);
+		//--and条件2
+		BmobQuery<Likes> eq2 = new BmobQuery<Likes>();
+		Post post=new Post();
+		post.setObjectId(postId);
+		eq2.addWhereEqualTo("post", post);
+		//最后组装完整的and条件
+		List<BmobQuery<Likes>> andQuerys = new ArrayList<BmobQuery<Likes>>();
+		andQuerys.add(eq1);
+		andQuerys.add(eq2);
+		//查询符合整个and条件的人
+		BmobQuery<Likes> query = new BmobQuery<Likes>();
+		query.and(andQuerys);
+		query.findObjects(new FindListener<Likes>() {
 			@Override
-			public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-				if (loadedImage != null) {
-					ImageView imageView = (ImageView) view;
-					boolean firstDisplay = !displayedImages.contains(imageUri);
-					if (firstDisplay) {
-						FadeInBitmapDisplayer.animate(imageView, 500);
-						displayedImages.add(imageUri);
+			public void done(List<Likes> list, BmobException e) {
+				if(e == null){
+					String likesId="";
+					for(Likes likes:list){
+						likesId=likes.getObjectId();
 					}
+					deleteLikesById(likesId);
+				}else {
+					ToastUtils.showShortToast("查询失败");
 				}
 			}
-		}
-
-
-
-
-
-
-
-		private void getPopupWindowInstance(int position, ViewHolder viewHolder) {
-			if (null != mPopupWindow) {
-				mPopupWindow.dismiss();
-				return;
-			} else {
-				initPopuptWindow(position, viewHolder);
-				mPopupWindow.setFocusable(true);
-				commentReplyEt.setFocusableInTouchMode(true);
-				commentReplyEt.requestFocus();
-				commentReplyEt.findFocus();
-				openKeyboard(new Handler(), 500);
+		});
+	}
+	/**
+	 * 根据点赞的id删除点赞数据
+	 * */
+	public void deleteLikesById(String likesId){
+		Likes likes = new Likes();
+		likes.setObjectId(likesId);
+		likes.delete(likesId, new UpdateListener() {
+			@Override
+			public void done(BmobException e) {
+				if(e == null){
+					Toast.makeText(context, "取消成功", Toast.LENGTH_LONG).show();
+					Intent mIntent = new Intent(
+							"com.example.myontheway01");// 通过指定发送的频道
+					context.sendBroadcast(mIntent);
+				}else {
+					Toast.makeText(context, "取消失败", Toast.LENGTH_LONG).show();
+					Intent mIntent = new Intent(
+							"com.example.myontheway01");// 通过指定发送的频道
+					context.sendBroadcast(mIntent);
+					LogUtil.d("LYJ","E ==" + e.getErrorCode() + e.toString());
+				}
 			}
+		});
+	}
+	private void getPopupWindowInstance(int position,ViewHolder viewHolder) {
+		if (null != mPopupWindow) {
+			mPopupWindow.dismiss();
+			return;
+		} else {
+			initPopuptWindow(position,viewHolder);
+			mPopupWindow.setFocusable(true);
+			commentReplyEt.setFocusableInTouchMode(true);
+			commentReplyEt.requestFocus();
+			commentReplyEt.findFocus();
+			openKeyboard(new Handler(), 500);
 		}
+	}
 
-		private void initPopuptWindow(int position, ViewHolder viewHolder) {
-			LayoutInflater layoutInflater = LayoutInflater.from(context);
-			View popupWindow = layoutInflater.inflate(R.layout.popup_reply_comment,
-					null);
-			commentReplyBtn = (Button) popupWindow
-					.findViewById(R.id.btn_reply_comment);
-			commentReplyEt = (EditText) popupWindow
-					.findViewById(R.id.et_reply_comment);
-			//commentReplyEt.setFocusable(false);// Ĭ���޽���
-			commentReplyBtn.setOnClickListener(new ClickOrder(position, viewHolder));
-			commentReplyEt.addTextChangedListener(new EditChangedListener());
-			commentReplyEt.setOnEditorActionListener(new OnEditorActionListener() {
+	private void initPopuptWindow(int position,ViewHolder viewHolder) {
+		LayoutInflater layoutInflater = LayoutInflater.from(context);
+		View popupWindow = layoutInflater.inflate(R.layout.popup_reply_comment,
+				null);
+		commentReplyBtn = (Button) popupWindow
+				.findViewById(R.id.btn_reply_comment);
+		commentReplyEt = (EditText) popupWindow
+				.findViewById(R.id.et_reply_comment);
+		//commentReplyEt.setFocusable(false);// 默认无焦点
+		commentReplyBtn.setOnClickListener(new ClickOrder(position,viewHolder));
+		commentReplyEt.addTextChangedListener(new EditChangedListener());
+		// 绑定软键盘上的完成按键，输入框必须加上，android:imeOptions="actionDone"
+		commentReplyEt.setOnEditorActionListener(new OnEditorActionListener() {
+			@Override
+			public boolean onEditorAction(TextView v, int actionId,
+										  KeyEvent event) {
+				Toast.makeText(context, "完成键监听成功", Toast.LENGTH_LONG).show();
+				// 隐藏输入法界面
+				((InputMethodManager) context
+						.getSystemService(Context.INPUT_METHOD_SERVICE))
+						.hideSoftInputFromWindow(
+								commentReplyEt.getWindowToken(), 0);
+				return true;
+				// do sth when pressed the enter key in the Soft InputMethod
+
+			}
+		});
+
+		// 创建一个PopupWindow
+		// 参数1：contentView 指定PopupWindow的内容
+		// 参数2：width 指定PopupWindow的width
+		// 参数3：height 指定PopupWindow的height
+		mPopupWindow = new PopupWindow(popupWindow, LayoutParams.MATCH_PARENT,
+				150);
+		WindowManager wm = (WindowManager) context
+				.getSystemService(Context.WINDOW_SERVICE);
+		// 获取屏幕和PopupWindow的width和height
+		mScreenWidth = wm.getDefaultDisplay().getWidth();// 手机屏幕宽度
+		mScreenWidth = wm.getDefaultDisplay().getHeight();// 手机屏幕的高度
+		mPopupWindowWidth = mPopupWindow.getWidth();
+		mPopupWindowHeight = mPopupWindow.getHeight();
+		// 显示键盘
+		openKeyboard(new Handler(), 500);
+
+	}
+
+	/**
+	 * 打开软键盘
+	 */
+	private void openKeyboard(Handler mHandler, int s) {
+		mHandler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+			}
+		}, s);
+	}
+
+	/**
+	 * 回复评论框的监听器
+	 * */
+	class EditChangedListener implements TextWatcher {
+		private CharSequence temp;// 监听前的文本
+		private int editStart;// 光标开始位置
+		private int editEnd;// 光标结束位置
+
+		// private final int charMaxNum = 10;
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+									  int after) {
+			temp = s;
+			context.runOnUiThread(new Runnable() {
+
 				@Override
-				public boolean onEditorAction(TextView v, int actionId,
-											  KeyEvent event) {
-					Toast.makeText(context, "��ɼ������ɹ�", Toast.LENGTH_LONG).show();
-					((InputMethodManager) context
-							.getSystemService(Context.INPUT_METHOD_SERVICE))
-							.hideSoftInputFromWindow(
-									commentReplyEt.getWindowToken(), 0);
-					return true;
-					// do sth when pressed the enter key in the Soft InputMethod
-
+				public void run() {
+					// TODO Auto-generated method stub
+					// commentReplyBtn.setText("取消");
+					// commentReplyBtn.invalidate();
 				}
 			});
 
-
-			mPopupWindow = new PopupWindow(popupWindow, LayoutParams.MATCH_PARENT,
-					150);
-			WindowManager wm = (WindowManager) context
-					.getSystemService(Context.WINDOW_SERVICE);
-			mScreenWidth = wm.getDefaultDisplay().getWidth();
-			mScreenWidth = wm.getDefaultDisplay().getHeight();
-			mPopupWindowWidth = mPopupWindow.getWidth();
-			mPopupWindowHeight = mPopupWindow.getHeight();
-
-			openKeyboard(new Handler(), 500);
-
+			Log.v("lyj", "取消");
 		}
 
-		/**
-		 *
-		 */
-		private void openKeyboard(Handler mHandler, int s) {
-			mHandler.postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-					imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
-				}
-			}, s);
-		}
-
-		/**
-		 *
-		 * */
-		class EditChangedListener implements TextWatcher {
-			private CharSequence temp;
-			private int editStart;
-			private int editEnd;
-
-			// private final int charMaxNum = 10;
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-										  int after) {
-				temp = s;
+		@Override
+		public void onTextChanged(final CharSequence s, int start, int before,
+								  int count) {
+			if (s != null && !s.equals("")) {
 				context.runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-						// commentReplyBtn.setText("ȡ��");
-						// commentReplyBtn.invalidate();
+						commentReplyBtn.setText("提交");
+						commentReplyBtn.invalidate();
+						Log.v("lyj", "提交");
 					}
 				});
 
-				Log.v("lyj", "ȡ��");
+			} else {
+				commentReplyBtn.setText("取消");
+				commentReplyBtn.invalidate();
 			}
+			Log.v("lyj", "提交.......");
 
-			@Override
-			public void onTextChanged(final CharSequence s, int start, int before,
-									  int count) {
-				if (s != null && !s.equals("")) {
-					context.runOnUiThread(new Runnable() {
-
-						@Override
-						public void run() {
-							// TODO Auto-generated method stub
-							commentReplyBtn.setText("�ύ");
-							commentReplyBtn.invalidate();
-							Log.v("lyj", "�ύ");
-						}
-					});
-
-				} else {
-					commentReplyBtn.setText("ȡ��");
-					commentReplyBtn.invalidate();
-				}
-				Log.v("lyj", "�ύ.......");
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				editStart = commentReplyEt.getSelectionStart();
-				editEnd = commentReplyEt.getSelectionEnd();
-				if (temp.length() == 0) {
-					commentReplyBtn.setText("ȡ��");
-				}
-			}
 		}
 
-		;
-	}
+		@Override
+		public void afterTextChanged(Editable s) {
+			editStart = commentReplyEt.getSelectionStart();
+			editEnd = commentReplyEt.getSelectionEnd();
+			if (temp.length() == 0) {
+				commentReplyBtn.setText("取消");
+			}
+		}
+	};
 }

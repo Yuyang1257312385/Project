@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.mytrip.R;
-import com.example.mytrip.base.ActBase;
+import com.example.mytrip.base.BaseActivity;
 import com.example.mytrip.ui.MainActivity;
 import com.example.mytrip.ui.adapter.GuideAdapter;
 import com.example.mytrip.view.View1;
@@ -23,7 +23,7 @@ import android.widget.Button;
  * 首次启动引导页
  *
  */
-public class ActGuide extends ActBase implements OnPageChangeListener,OnClickListener{
+public class GuideActivity extends BaseActivity implements OnPageChangeListener,OnClickListener{
 
 	private ViewPager mGuideVp;
 	private List<View> mData;
@@ -112,7 +112,7 @@ public class ActGuide extends ActBase implements OnPageChangeListener,OnClickLis
 		switch (v.getId()) {
 			case R.id.btn_start:
 				mStartBtn.setBackgroundResource(R.drawable.wel_btn_bg_on);
-				Intent intent = new Intent(ActGuide.this, MainActivity.class);
+				Intent intent = new Intent(GuideActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 				break;

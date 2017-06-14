@@ -1,9 +1,12 @@
 package com.example.mytrip.ui;
 
 import com.example.mytrip.R;
+import com.example.mytrip.tools.LogUtil;
+import com.example.mytrip.tools.ToastUtils;
 import com.example.mytrip.ui.bmobdb.MyUser;
 
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import android.app.Activity;
 import android.content.Intent;
@@ -32,17 +35,21 @@ public void onClick(View arg0) {
 	String sign=updateSignEt.getText().toString().trim();
 	MyUser mUser=new MyUser();
 	mUser.setSign(sign);
-	MyUser bmobUser = BmobUser.getCurrentUser(this,MyUser.class);
-	mUser.update(this,bmobUser.getObjectId(),new UpdateListener() {
-	    @Override
-	    public void onSuccess() {
-	     Intent intent=new Intent(EditSignActivity.this,SetActivity.class);
-	     startActivity(intent);
-	    }
-	    @Override
-	    public void onFailure(int code, String msg) {
-	       Toast.makeText(EditSignActivity.this, "�޸�ʧ��", Toast.LENGTH_LONG).show();
-	    }
+	MyUser bmobUser = BmobUser.getCurrentUser(MyUser.class);
+
+	mUser.update(bmobUser.getObjectId(),new UpdateListener() {
+		@Override
+		public void done(BmobException e) {
+			if(e == null){
+				Intent intent=new Intent(EditSignActivity.this,SetActivity.class);
+				startActivity(intent);
+			}else {
+				ToastUtils.showShortToast("修改失败");
+				LogUtil.d("LYJ",e.toString());
+			}
+		}
+
+
 	});
 }
 }

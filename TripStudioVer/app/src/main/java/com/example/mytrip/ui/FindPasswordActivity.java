@@ -2,7 +2,7 @@ package com.example.mytrip.ui;
 
 import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.RequestSMSCodeListener;
+import cn.bmob.v3.listener.QueryListener;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,87 +15,85 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mytrip.R;
+import com.example.mytrip.tools.ToastUtils;
 
 /**
- * ������֤�룬�����ǿ���֤������Ϊ�գ���ת�������������,������֤�봫��ȥ
+ * 发送验证码，并作非空验证，若不为空，跳转至设置密码界面,并将验证码传过去
  * */
 public class FindPasswordActivity extends Activity implements OnClickListener{
-	private EditText mNumberEt;//�绰���������
-	private EditText mCodeEt;//��֤�������
-	private Button mGetCode,mNextStepBtn;//��ȡ��֤�밴ť����һ����ť
-	private String number,code;//�绰���룬��֤��
-	private Intent intent;//��ת��ע��������ͼ
-	private TextView mTitleTv;//���ñ���
+	private EditText mNumberEt;//电话号码输入框
+	private EditText mCodeEt;//验证码输入框
+	private Button mGetCode,mNextStepBtn;//获取验证码按钮，下一步按钮
+	private String number,code;//电话号码，验证码
+	private Intent intent;//跳转至注册界面的意图
+	private TextView mTitleTv;//设置标题
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		//��ʼ��
+		//初始化
 		mNumberEt=(EditText) findViewById(R.id.et_number);
 		mCodeEt=(EditText) findViewById(R.id.et_code);
 		mGetCode=(Button) findViewById(R.id.btn_get_code);
 		mNextStepBtn=(Button) findViewById(R.id.btn_next);
 		mTitleTv=(TextView) findViewById(R.id.tv_title_register);
-		mTitleTv.setText("��������");
+		mTitleTv.setText("重置密码");
 		mGetCode.setOnClickListener(this);
 		mNextStepBtn.setOnClickListener(this);
 	}
 	/**
-	 * ���ݵ绰���뷢����֤��
+	 * 根据电话号码发送验证码
 	 * */
 	private void sendMsgCode(String phoneNumber){
-		//1������������֤��ӿ�
-		BmobSMS.requestSMSCode(this, phoneNumber, "ģ������",new RequestSMSCodeListener() {
+		//1、调用请求验证码接口
+		BmobSMS.requestSMSCode(phoneNumber, "模板名称", new QueryListener<Integer>() {
 			@Override
-			public void done(Integer smsId,BmobException ex) {
-				// TODO Auto-generated method stub
-				if(ex!=null){//��֤�뷢�ͳɹ�
-					toast("����ʧ�ܣ�������");			
+			public void done(Integer integer, BmobException e) {
+				if(e !=null){//验证码发送成功
+					ToastUtils.showShortToast("发送失败，请重试");
 				}else{
-					toast("���ͳɹ�");
+					ToastUtils.showShortToast("发送成功");
 				}
 			}
 		});
+
 	}
 
-	/** ��֤������֤��ǿ� ,����ת
-	 * @method requestSmsCode    
-	 * @return void  
-	 * @exception   
+	/** 验证短信验证码非空 ,则跳转
+	 * @method requestSmsCode
+	 * @return void
+	 * @exception
 	 */
 	private void checkNullSmsCode(){
 		number = mNumberEt.getText().toString();
 		String code = mCodeEt.getText().toString();
 		if(code!=null&&!code.equals("")&&number!=null&&!number.equals("")){
-						intent=new Intent(FindPasswordActivity.this,FindResetPasswordActivity.class);
-			           	intent.putExtra("code", code);
-			           	startActivity(intent);
-			           	finish();
+			intent=new Intent(FindPasswordActivity.this,FindResetPasswordActivity.class);
+			intent.putExtra("code", code);
+			startActivity(intent);
+			finish();
 		}else{
-			toast("�ֻ��Ż���֤��Ϊ��");
+			ToastUtils.showShortToast("手机号或验证码为空");
 		}
 	}
-    //toast������������Ϣ
-	public void toast(String str){
-		Toast.makeText(FindPasswordActivity.this, str, Toast.LENGTH_LONG).show();
-	}
-	
-    //���ݵ����ͬ�İ�ť���ò�ͬ�ķ���
+
+
+	//根据点击不同的按钮调用不同的方法
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.btn_get_code:
-			number = mNumberEt.getText().toString().trim();
-			sendMsgCode(number);
-			break;
-		case R.id.btn_next:
-			checkNullSmsCode();
-			break;
-		default:
-			break;
+			case R.id.btn_get_code:
+				number = mNumberEt.getText().toString().trim();
+				sendMsgCode(number);
+				break;
+			case R.id.btn_next:
+				checkNullSmsCode();
+				break;
+			default:
+				break;
 		}
-		
+
 	}
 }
