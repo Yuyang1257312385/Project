@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_checked_client_info_list.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_checked_client_info_list.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_check_out.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_check_out.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_checked_client_info_item.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_checked_client_info_item.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_register.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_room_info.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_room_info.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_roomtype.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_roomtype.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_welcome.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_welcome.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_check_in.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_check_in.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_check_in_item.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\layout\\activity_check_in_item.xml"
+    }
+]

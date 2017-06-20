@@ -105,7 +105,7 @@ public final class ActivityUtil {
     }
 
     /**
-     * 切换全屏状�?�?
+     * 切换全屏状
      * @param activity Activity
      * @param isFull 设置为true则全屏，否则非全�?
      */

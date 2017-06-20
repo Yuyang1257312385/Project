@@ -7,9 +7,9 @@ public class FootPrint extends BmobObject {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String mAdds;//����ĵص�
-	private BmobUser mUserName;//������û�
-	private String mContent;//�������Ϣ����
+	private String mAdds;
+	private BmobUser mUserName;
+	private String mContent;
 	
 	public String getmAdds() {
 		return mAdds;
@@ -32,10 +32,5 @@ public class FootPrint extends BmobObject {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
-
-
-	
 
 }

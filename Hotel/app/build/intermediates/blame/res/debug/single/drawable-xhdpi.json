@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\checked_info_search.png",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\checked_info_search.png"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ck_min.png",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\ck_min.png"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\cke_min.png",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\cke_min.png"
+    }
+]

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--new xml==》drawable==》选择animation-list  -->
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+     <item
+        android:drawable="@drawable/img_01"
+        android:duration="1000"/>
+    <item
+        android:drawable="@drawable/img_02"
+        android:duration="1000"/>   
+    <item
+        android:drawable="@drawable/img_03"
+        android:duration="1000"/>
+    <item
+        android:drawable="@drawable/img_04"
+        android:duration="1000"/>
+    <item
+        android:drawable="@drawable/img_05"
+        android:duration="1000"/>
+    <item
+        android:drawable="@drawable/img_06"
+        android:duration="1000"/>
+    <item
+        android:drawable="@drawable/img_07"
+        android:duration="1000"/>
+</animation-list>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAB4" >
+          
+        <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#F9A51B"
+        android:text="@string/main_title_tv" 
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textColor="#ffffff"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="80dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" 
+            android:background="#00000000"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_checkin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/main_btn_checkin_bg"
+                android:text="@string/main_checkin_btn"
+                android:textSize="18sp" 
+                android:textColor="#ffffff"/>
+
+            <Button
+                android:id="@+id/btn_check_in_info"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/main_btn_checkinmsg_bg"
+                android:text="@string/main_checkinmsg_btn" 
+                android:textSize="18sp"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:layout_weight="3"
+            android:background="#00000000"
+            android:orientation="horizontal">
+
+           <Button
+                android:id="@+id/btn_exit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/main_btn_exit_bg"
+                android:text="@string/main_exit_btn" 
+                android:textSize="18sp"
+                android:textColor="#ffffff"/>
+
+            <Button
+                android:id="@+id/btn_exitmsg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/main_btn_exitmsg_bg"
+                android:text="@string/main_exitmsg_btn"
+                android:textSize="18sp" 
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

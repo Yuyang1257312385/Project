@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <TextView
+        android:id="@+id/tv_title_check_in"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#F9A51B"
+        android:text="@string/check_in_title_tv" 
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textColor="#ffffff"/>
+    <LinearLayout
+        android:id="@+id/ll_room_info"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_below="@id/tv_title_check_in"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/login_bg"
+        android:orientation="vertical" >
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/activity_check_in_item" />
+        
+    </LinearLayout>
+    <Button 
+        android:id="@+id/btn_custom_info"
+        android:layout_width="0dp"
+        android:layout_height="40dip"
+        android:layout_alignLeft="@id/ll_room_info"
+        android:layout_alignRight="@id/ll_room_info"
+        android:layout_below="@id/ll_room_info"
+        android:background="@drawable/login_button_bg"
+        android:layout_marginTop="60dp"
+        android:text="@string/check_in_confirm_btn"
+        android:textColor="#ffffff"
+        android:textSize="20sp"/>
+    
+
+</RelativeLayout>

@@ -6,7 +6,6 @@ import java.util.List;
 import com.example.mytrip.R;
 import com.example.mytrip.base.BaseActivity;
 import com.example.mytrip.ui.MainActivity;
-import com.example.mytrip.ui.adapter.GuideAdapter;
 import com.example.mytrip.view.View1;
 
 import android.content.Intent;

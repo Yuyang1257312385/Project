@@ -6,8 +6,8 @@ import org.json.JSONObject;
 import com.example.mytrip.R;
 import com.example.mytrip.base.Constant;
 import com.example.mytrip.tools.ToastUtils;
-import com.example.mytrip.ui.FindPasswordActivity;
 import com.example.mytrip.ui.MainActivity;
+import com.example.mytrip.ui.personal.FindPasswordActivity;
 import com.example.mytrip.ui.RegisterActivity;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
@@ -40,7 +40,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class LoginActivity extends Activity implements OnClickListener {
 	private TextView mForgerPwdTv,mOtherWayLoginTv;//标题,忘记密码

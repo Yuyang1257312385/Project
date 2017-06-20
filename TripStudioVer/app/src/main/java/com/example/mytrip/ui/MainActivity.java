@@ -1,8 +1,6 @@
 package com.example.mytrip.ui;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 import cn.bmob.v3.BmobUser;
@@ -12,26 +10,23 @@ import cn.bmob.v3.datatype.BmobFile;
 import com.example.mytrip.R;
 import com.example.mytrip.tools.ImageLoaderUtil;
 import com.example.mytrip.tools.ToastUtils;
-import com.example.mytrip.ui.bmobdb.MyUser;
+import com.example.mytrip.ui.feedback.FeedBackActivity;
 import com.example.mytrip.ui.footprint.FootPrintActivity;
-import com.example.mytrip.ui.fragment.NearByFragment;
-import com.example.mytrip.ui.fragment.NewsFragment;
-import com.example.mytrip.ui.fragment.PostFragment;
-import com.example.mytrip.ui.fragment.SightListFragment;
+import com.example.mytrip.ui.personal.bean.MyUser;
 import com.example.mytrip.ui.login.LoginActivity;
-import com.example.mytrip.ui.slideactivity.ExerciseActivity;
+import com.example.mytrip.ui.map.MapOfflineActivity;
+import com.example.mytrip.ui.post.PublishPostActivity;
+import com.example.mytrip.ui.map.NearByFragment;
+import com.example.mytrip.ui.post.PostFragment;
+import com.example.mytrip.ui.strategy.SightListFragment;
+import com.example.mytrip.ui.slideitem.ExerciseActivity;
+import com.example.mytrip.ui.slideitem.SetActivity;
 import com.example.mytrip.view.XCRoundImageView;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.slidingmenu.lib.SlidingMenu;
 
 import android.os.Bundle;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -44,7 +39,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-//import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -198,7 +192,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
             mUserNameTv.setText(mUser.getUsername());
             BmobFile avatarFile = mUser.getHeadImage();
             if (null != avatarFile) {
-                ImageLoaderUtil.displayImage(avatarFile.getFileUrl(),mLeftHeadIv);
+                ImageLoaderUtil.displayImage(avatarFile.getFileUrl(), mLeftHeadIv);
             }
             mIsLogin = true;
         } else {
@@ -242,9 +236,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
             case R.id.rl_feed_back:
                 BmobUser user = new BmobUser();
                 if (user != null) {
-                    //todo 报错 暂时注掉
-				Intent intent8=new Intent(MainActivity.this,FeedBackActivity.class);
-				startActivity(intent8);
+                    FeedBackActivity.actionStart(this);
                 } else {
                     Toast.makeText(this, "", Toast.LENGTH_LONG).show();
                 }
@@ -256,9 +248,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                 break;
             case R.id.rl_foot_print:
                 if (mIsLogin) {
-                    Intent intent2 = new Intent(MainActivity.this, FootPrintActivity.class);
-                    startActivity(intent2);
-                }else{
+                    Intent footPrintIntent = new Intent(MainActivity.this, FootPrintActivity.class);
+                    startActivity(footPrintIntent);
+                } else {
                     ToastUtils.showShortToast("请先登录");
                 }
 
@@ -272,7 +264,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         }
 
     }
-
 
 
 }

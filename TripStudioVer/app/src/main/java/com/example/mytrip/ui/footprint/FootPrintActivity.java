@@ -15,7 +15,6 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapView;
 import com.example.mytrip.R;
-import com.example.mytrip.tools.LogUtil;
 import com.example.mytrip.tools.ToastUtils;
 
 import android.app.Activity;
@@ -33,8 +32,7 @@ import android.widget.Toast;
  * @author Administrator
  * 
  */
-public class FootPrintActivity extends Activity implements OnClickListener,
-		getQuery {
+public class FootPrintActivity extends Activity implements OnClickListener{
 	private Activity mContext;
 	// 时间轴
 	private ListView listView;

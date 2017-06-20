@@ -83,7 +83,7 @@
 
         </activity>
 
-        <activity android:name=".ui.SightDetailActivity"/>
+        <activity android:name=".ui.strategy.SightDetailActivity"/>
 
         <activity android:name="com.example.mytrip.ui.login.GuideActivity">
 
@@ -117,22 +117,22 @@
                 <data android:scheme="tencent100442925" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.mytrip.ui.RegisterActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.RegisterDataActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.FindResetPasswordActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.MapActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.PublishPostActivity"></activity>
-        <activity android:name=".ui.slideactivity.ExerciseActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.MapOfflineActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.personal.RegisterActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.personal.RegisterDataActivity"></activity>
+        <activity android:name=".ui.personal.FindResetPasswordActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.map.MapActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.post.PublishPostActivity"></activity>
+        <activity android:name=".ui.slideitem.ExerciseActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.map.MapOfflineActivity"></activity>
         <activity android:name="com.example.mytrip.ui.map.BaseMapAct"></activity>
-        <activity android:name="com.example.mytrip.ui.MapInfoActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.MapNavigationActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.map.MapInfoActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.map.MapNavigationActivity"></activity>
         <!--<activity android:name="FeedBackActivity"></activity>-->
         <activity android:name=".ui.footprint.FootPrintActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.SetActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.EditSignActivity"></activity>
-        <activity android:name="com.example.mytrip.ui.FindPasswordActivity"></activity>
-        <activity android:name=".ui.FeedBackActivity"/>
+        <activity android:name="com.example.mytrip.ui.slideitem.SetActivity"></activity>
+        <activity android:name="com.example.mytrip.ui.personal.EditSignActivity"></activity>
+        <activity android:name=".ui.personal.FindPasswordActivity"></activity>
+        <activity android:name=".ui.feedback.FeedBackActivity"/>
     </application>
 
 </manifest>
