@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="260dp"
+    android:background="#ffffff" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+          android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#00000000" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal" 
+            android:layout_weight="1"
+          >
+            <Button
+                android:id="@+id/btn_single_room"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/roomtype_btn_bg"
+                android:padding="20dp"
+                android:text="@string/roomtype_single_room_btn"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_double_room"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/roomtype_btn_bg"
+                android:padding="20dp"
+                android:text="@string/roomtype_double_room_btn"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+            <Button
+                android:id="@+id/btn_standard_single"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/roomtype_btn_bg"
+                android:padding="20dp"
+                android:text="@string/roomtype_standard_single_btn"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btn_business_double"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/roomtype_btn_bg"
+                android:padding="20dp"
+                android:text="@string/roomtype_business_double_btn"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+            </LinearLayout>
+    </LinearLayout>
+    
+</RelativeLayout>
