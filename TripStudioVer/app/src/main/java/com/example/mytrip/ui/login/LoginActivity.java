@@ -4,11 +4,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.mytrip.R;
+import com.example.mytrip.base.BaseActivity;
 import com.example.mytrip.base.Constant;
 import com.example.mytrip.tools.ToastUtils;
 import com.example.mytrip.ui.MainActivity;
 import com.example.mytrip.ui.personal.FindPasswordActivity;
-import com.example.mytrip.ui.RegisterActivity;
+import com.example.mytrip.ui.personal.RegisterActivity;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
@@ -18,7 +19,7 @@ import cn.bmob.v3.BmobUser.BmobThirdUserAuth;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.SaveListener;
-
+import skin.support.app.SkinCompatActivity;
 
 
 import android.app.Activity;
@@ -41,7 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class LoginActivity extends Activity implements OnClickListener {
+public class LoginActivity extends BaseActivity implements OnClickListener {
 	private TextView mForgerPwdTv,mOtherWayLoginTv;//标题,忘记密码
 	//   private TextView mTitleTv;
 	private LinearLayout mLoginLl,mOtherWayLoginLl;//账号密码框

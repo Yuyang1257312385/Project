@@ -1,6 +1,7 @@
 package com.example.mytrip.base;
 
 import cn.bmob.v3.Bmob;
+import skin.support.SkinCompatManager;
 
 import com.baidu.mapapi.SDKInitializer;
 
@@ -33,7 +34,9 @@ public class MyApp extends Application {
 		
 		initImageLoader(getApplicationContext());
 		initOkGo();
-    }
+		SkinCompatManager.init(this).loadSkin();
+
+	}
 
 	/**
 	 * 初始化网络请求框架

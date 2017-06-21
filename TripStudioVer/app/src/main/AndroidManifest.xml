@@ -63,7 +63,8 @@
         android:allowBackup="true"
         android:icon="@drawable/logo1"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:name="com.example.mytrip.base.MyApp">
+        android:theme="@style/BaseAppTheme"
+        android:name="com.example.mytrip.base.MyApp">
 
         <!-- 填写百度的key -->
         <meta-data

@@ -5,6 +5,8 @@ import java.util.List;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
+import skin.support.SkinCompatManager;
+import skin.support.utils.SkinPreference;
 
 
 import com.example.mytrip.R;
@@ -31,11 +33,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -62,6 +67,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     private XCRoundImageView mLeftHeadIv;
     private Button mLoginBtn;
     private TextView mUserNameTv;
+    private CheckBox mNightModeCb;
 
     private boolean mIsLogin = false;//是否登录
 
@@ -100,6 +106,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         mExerciseRl = findViewById(R.id.rl_exercise);
         mSetRl = findViewById(R.id.rl_set);
         mFeedBackRl = findViewById(R.id.rl_feed_back);
+        mNightModeCb = (CheckBox) findViewById(R.id.cb_night_mode);
 
         mLeftHeadIv = (XCRoundImageView) findViewById(R.id.iv_head_img);
         mUserHeadIv = (ImageView) findViewById(R.id.iv_user_head);
@@ -112,7 +119,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
      * 设置侧滑
      */
     private void setSlideMenu() {
-        mLeftMenu = new SlidingMenu(this);
+        mLeftMenu = new SlidingMenu(getApplicationContext());
         mLeftMenu.setMode(SlidingMenu.LEFT);
         mLeftMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
         // menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
@@ -140,6 +147,22 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     }
 
     private void setChechChangedListener() {
+        mNightModeCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    if (TextUtils.isEmpty(SkinPreference.getInstance().getSkinName())) {
+                        //loadskin完成后会setSkinName，下次getSkinName得到的就是night.skin，根据需求合理修改
+                        SkinCompatManager.getInstance().loadSkin("night.skin", null);
+                    } else {
+                        SkinCompatManager.getInstance().restoreDefaultTheme();
+                    }
+                }else {
+                    SkinCompatManager.getInstance().restoreDefaultTheme();
+                }
+            }
+        });
+
         mRG.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

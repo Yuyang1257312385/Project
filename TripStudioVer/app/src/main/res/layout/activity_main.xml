@@ -7,7 +7,8 @@
      <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+         android:background="@color/white">
         <!-- 左边的界面 -->
  <!-- 
         <include layout="@layout/left_menu" /> -->

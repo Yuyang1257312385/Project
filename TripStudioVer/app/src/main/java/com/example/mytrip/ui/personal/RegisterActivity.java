@@ -21,7 +21,6 @@ import android.widget.EditText;
 
 import com.example.mytrip.R;
 import com.example.mytrip.tools.ToastUtils;
-import com.example.mytrip.ui.RegisterDataActivity;
 
 public class RegisterActivity extends Activity implements OnClickListener{
 	private static final int COUNT_TIME = 60 * 1000;// 倒计时总时间

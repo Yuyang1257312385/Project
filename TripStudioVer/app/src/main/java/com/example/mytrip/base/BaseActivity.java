@@ -5,13 +5,16 @@ import android.os.Bundle;
 
 import com.example.mytrip.tools.SPUtils;
 
+import skin.support.app.SkinCompatActivity;
+import skin.support.observe.SkinObserver;
+
 /**
  * Created by yu on 2017/5/24.
  *
  * Activity的基类
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends SkinCompatActivity {
 
     public SPUtils spUtils;
 
