@@ -211,12 +211,13 @@
 
         <CheckBox
             android:id="@+id/cb_night_mode"
-            style="@style/ModeCheckBox"
+            android:checked="true"
+            android:button="@drawable/checkbox_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
-            android:text="夜间模式"
+            android:text="日间模式"
             android:textColor="#ffffff"
             android:textSize="20sp" />
   </RelativeLayout>

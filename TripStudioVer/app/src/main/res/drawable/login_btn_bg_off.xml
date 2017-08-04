@@ -5,13 +5,13 @@
     >
     <!-- 设置线 -->
     <stroke android:width="2dp"
-        android:color="#D9DADC"/>
+        android:color="@color/grey"/>
     <!-- 设置角度 -->
     <corners android:radius="300dp"/>
     <!-- 填充色 -->
    <gradient 
         android:angle="0"
-        android:startColor="#ffffff"
-        android:endColor="#ffffff"/>
+        android:startColor="@color/blue"
+        android:endColor="@color/blue"/>
 
 </shape>

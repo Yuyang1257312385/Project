@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/rl_login"
-    android:background="@drawable/img_user_register_bg">
-    
-   
-        <com.example.mytrip.view.XCRoundImageView
-        android:id="@+id/iv_login_logo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:src="@drawable/pre_wel_logo" />
-     
+    android:background="@color/deep_orange">
+
+
     <LinearLayout
         android:id="@+id/ll_login"
         android:layout_width="match_parent"
@@ -24,16 +15,16 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="40dp"
-        android:background="#00000000"
-        android:orientation="vertical" 
+        android:background="@color/trans_parent"
+        android:orientation="vertical"
         android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#00000000"
-            android:orientation="horizontal" >
+            android:background="@color/trans_parent"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -43,14 +34,16 @@
                 android:paddingBottom="14dp"
                 android:paddingTop="14dp"
                 android:src="@drawable/login_user" />
+
             <EditText
-        android:id="@+id/et_username"
-        style="@style/LoginEditTextStyle"
-        android:layout_below="@+id/btn_login"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="请输入用户名或手机号"
-        android:textColor="#ffffff" />
+                android:id="@+id/et_username"
+                style="@style/LoginEditTextStyle"
+                android:layout_below="@+id/btn_login"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:hint="请输入用户名或手机号"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <View style="@style/EditTextLineStyle" />
@@ -59,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="#00000000"
-            android:orientation="horizontal" >
+            android:background="@color/trans_parent"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -75,8 +68,8 @@
                 android:id="@+id/et_password"
                 style="@style/LoginEditTextStyle"
                 android:hint="请输入密码"
-                android:inputType="textPassword" 
-                android:textColor="#ffffff"/>
+                android:inputType="textPassword"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 
@@ -88,9 +81,9 @@
         android:layout_below="@+id/ll_login"
         android:layout_marginTop="8dp"
         android:button="@drawable/remember_pwd_select_bg"
-        android:text="记住密码" 
-        android:textColor="#666666"
-        android:visibility="invisible"/>
+        android:text="记住密码"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/btn_login"
@@ -101,11 +94,10 @@
         android:layout_below="@+id/cb_remberpwd"
         android:layout_marginTop="10dp"
         android:background="@drawable/login_button_bg"
-         android:text="登    录" 
-        android:textColor="#8B668B"
-        android:visibility="invisible"/>
-    
-       
+        android:text="登    录"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
+
 
     <Button
         android:id="@+id/btn_register"
@@ -115,10 +107,10 @@
         android:layout_alignRight="@+id/ll_login"
         android:layout_below="@+id/btn_login"
         android:layout_marginTop="10dp"
-        android:background="@drawable/wel_start_btn_bg"
-        android:text="注    册" 
-        android:textColor="#8B668B"
-        android:visibility="invisible"/>
+        android:background="@drawable/login_button_bg"
+        android:text="注    册"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/tv_forget_pwd"
@@ -126,9 +118,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/cb_remberpwd"
         android:layout_alignRight="@+id/btn_login"
-        android:text="忘记密码？" 
-        android:textColor="#666666"
-        android:visibility="invisible"/>
+        android:text="忘记密码？"
+        android:textColor="@color/white"
+        android:visibility="invisible" />
+
     <TextView
         android:id="@+id/tv_otherway_login"
         android:layout_width="wrap_content"
@@ -136,27 +129,26 @@
         android:layout_above="@+id/ll_otherway_login"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="6dp"
-        android:text="第三方登录" 
-        android:textColor="#ffffff"
+        android:text="第三方登录"
+        android:textColor="@color/white"
         android:textSize="15sp"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
+
     <LinearLayout
-       android:id="@+id/ll_otherway_login"
+        android:id="@+id/ll_otherway_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="30dp"
-        android:visibility="invisible"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="invisible">
 
-       
 
         <LinearLayout
-            
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-             >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/iv_weibo"
@@ -173,8 +165,8 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:src="@drawable/third_login_qq" />
-            
-          
+
+
             <ImageView
                 android:id="@+id/iv_weixin"
                 android:layout_width="0dp"
@@ -184,4 +176,14 @@
                 android:src="@drawable/third_login_weixin" />
         </LinearLayout>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_login_logo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignEnd="@+id/tv_otherway_login"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/tv_otherway_login"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/icon_plane" />
 </RelativeLayout>

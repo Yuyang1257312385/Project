@@ -10,6 +10,7 @@ import skin.support.utils.SkinPreference;
 
 
 import com.example.mytrip.R;
+import com.example.mytrip.base.BaseActivity;
 import com.example.mytrip.tools.ImageLoaderUtil;
 import com.example.mytrip.tools.ToastUtils;
 import com.example.mytrip.ui.feedback.FeedBackActivity;
@@ -27,12 +28,12 @@ import com.example.mytrip.view.XCRoundImageView;
 
 import com.slidingmenu.lib.SlidingMenu;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends FragmentActivity implements OnClickListener {
+public class MainActivity extends BaseActivity implements OnClickListener {
 
     private TextView mTitleTv;
     private ImageView mUserHeadIv;
@@ -150,7 +151,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         mNightModeCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if(!isChecked){
+                    mNightModeCb.setText("夜间模式");
                     if (TextUtils.isEmpty(SkinPreference.getInstance().getSkinName())) {
                         //loadskin完成后会setSkinName，下次getSkinName得到的就是night.skin，根据需求合理修改
                         SkinCompatManager.getInstance().loadSkin("night.skin", null);
@@ -158,6 +160,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                         SkinCompatManager.getInstance().restoreDefaultTheme();
                     }
                 }else {
+                    mNightModeCb.setText("日间模式");
                     SkinCompatManager.getInstance().restoreDefaultTheme();
                 }
             }
@@ -226,7 +229,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     }
 
     public void showFragment(int id, Fragment fragment) {
-        FragmentManager manager = getSupportFragmentManager();
+        FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(id, fragment);
         transaction.commit();

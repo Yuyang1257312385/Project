@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.ispring.planeghost.MainActivity">
 
-    <com.ispring.gameplane.game.GameView
+    <com.ispring.planeghost.game.GameView
         android:id="@+id/gameView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
