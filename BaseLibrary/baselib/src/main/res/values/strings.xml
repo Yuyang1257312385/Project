@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BaseLib</string>
+    <string name="crash_info">=========崩溃信息=========\n</string>
+    <string name="device_info">=========设备信息=========\n</string>
+    <string name="app_info">=========应用信息=========\n</string>
+    <string name="error">**************ERROR**************\n</string>
+    <string name="error_end">**************Error End**************\n\n\n\n</string>
+</resources>

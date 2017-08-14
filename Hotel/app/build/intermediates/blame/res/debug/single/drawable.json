@@ -1,13 +1,5 @@
 [
     {
-        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_btn_bg_on.xml",
-        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\login_btn_bg_on.xml"
-    },
-    {
-        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkinmsg_bg_off.xml",
-        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkinmsg_bg_off.xml"
-    },
-    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_item_write.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\bg_item_write.xml"
     },
@@ -16,16 +8,12 @@
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\login_bg.xml"
     },
     {
-        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exit_bg_on.xml",
-        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exit_bg_on.xml"
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkin_bg_on.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkin_bg_on.xml"
     },
     {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomno_selector_off.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomno_selector_off.xml"
-    },
-    {
-        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomnum_selector_radiogroup.xml",
-        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomnum_selector_radiogroup.xml"
     },
     {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_btn_bg_off.xml",
@@ -36,20 +24,28 @@
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roomtype_btn_bg_on.xml"
     },
     {
-        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkin_bg_off.xml",
-        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkin_bg_off.xml"
-    },
-    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exitmsg_bg_on.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exitmsg_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roomtype_btn_bg_off.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\roomtype_btn_bg_off.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_btn_bg_off.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\login_btn_bg_off.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkinmsg_bg_off.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkinmsg_bg_off.xml"
     },
     {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exit_bg.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exit_bg.xml"
     },
     {
-        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button_bg.xml",
-        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\login_button_bg.xml"
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\login_bg.xml"
     },
     {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roomtype_btn_bg.xml",
@@ -60,10 +56,6 @@
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exit_bg_off.xml"
     },
     {
-        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomno_selector_on.xml",
-        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomno_selector_on.xml"
-    },
-    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkin_bg.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkin_bg.xml"
     },
@@ -72,8 +64,20 @@
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exitmsg_bg_off.xml"
     },
     {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomno_selector_off.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomno_selector_off.xml"
+    },
+    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exitmsg_bg.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exitmsg_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkinmsg_bg_on.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkinmsg_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\checked_white_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\checked_white_bg.xml"
     },
     {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkinmsg_bg.xml",
@@ -92,8 +96,108 @@
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roomtype_btn_bg_off.xml"
     },
     {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exitmsg_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exitmsg_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exit_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exit_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exitmsg_bg_on.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exitmsg_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_item_write.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\bg_item_write.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_btn_bg_on.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\login_btn_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkinmsg_bg_off.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkinmsg_bg_off.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\login_button_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roomtype_btn_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\roomtype_btn_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exit_bg_on.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exit_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomnum_selector_radiogroup.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomnum_selector_radiogroup.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roomtype_btn_bg_on.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\roomtype_btn_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkin_bg_off.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkin_bg_off.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkinmsg_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkinmsg_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomnum_checked.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomnum_checked.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\remember_pwd_select_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\remember_pwd_select_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_button_bg.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\login_button_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exit_bg_off.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exit_bg_off.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\login_btn_bg_on.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\login_btn_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomno_selector_on.xml",
+        "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomno_selector_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exit_bg_on.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exit_bg_on.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkin_bg.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkin_bg.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkin_bg_off.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_checkin_bg_off.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomnum_selector_radiogroup.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomnum_selector_radiogroup.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomno_selector_on.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomno_selector_on.xml"
+    },
+    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\roominfo_roomnum_checked.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable\\roominfo_roomnum_checked.xml"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_exitmsg_bg_off.xml",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable\\main_btn_exitmsg_bg_off.xml"
     },
     {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\main_btn_checkin_bg_on.xml",

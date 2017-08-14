@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     }

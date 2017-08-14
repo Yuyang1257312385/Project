@@ -8,7 +8,19 @@
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-mdpi\\cke_min.png"
     },
     {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ck_min.png",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable-mdpi\\ck_min.png"
+    },
+    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\ic_launcher.png",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi\\cke_min.png",
+        "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable-mdpi\\cke_min.png"
     }
 ]
