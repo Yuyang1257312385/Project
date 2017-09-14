@@ -4,10 +4,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.lyj.baselib.CrashUtil.CrashHandler;
+import com.lyj.baselib.dialog.BaseDialog;
+import com.lyj.baselib.dialog.SampleAct;
+import com.lyj.baselibrary.wangluo.NetActOne;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,7 +22,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btn_next;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         CrashHandler.getInstance().init(this.getApplicationContext());
 
-        //printLastException();
-        intiView();
         initAction();
-
-
-
-
     }
 
-    private void intiView() {
-        btn_next = (Button) findViewById(R.id.btn_next);
-    }
 
     private void initAction() {
-        btn_next.setOnClickListener(this);
+        findViewById(R.id.btn_next).setOnClickListener(this);
+        findViewById(R.id.btn_dialog).setOnClickListener(this);
+        findViewById(R.id.btn_net).setOnClickListener(this);
     }
 
     private void printLastException() {
@@ -81,6 +80,63 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this,NextActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btn_dialog:
+                showCustomDialog();
+                break;
+            case R.id.btn_net:
+                Intent intent1 = new Intent(this, NetActOne.class);
+                startActivity(intent1);
+                NetTestActivity.actionStart(this);
+                break;
         }
+    }
+
+    private void showCustomDialog() {
+        View.OnClickListener onShareClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"share",Toast.LENGTH_LONG).show();
+            }
+        };
+
+        final BaseDialog alertDialog = new BaseDialog.Builder(this)
+                //设置dialog的布局，必须有，可以是id或view
+                .setContentView(com.lyj.baselib.R.layout.dialog_layout)
+                //宽度设置全屏
+                //.setFullWidth()
+                //设置自定义的宽高
+                //.setWidthAndHeight(100,100)
+
+                //设置在屏幕中的位置
+                .setGravity(Gravity.BOTTOM)
+
+                //为R.id.btn_confirm 设置文字
+                .setText(com.lyj.baselib.R.id.btn_confirm,"确认")
+
+                //为viewid为R.id.btn_share 设置点击监听,或者可以直接对alderDialog设置监听
+                .setOnClickListener(com.lyj.baselib.R.id.btn_share,onShareClickListener)
+                //点击空白出是否可以取消，true 可以取消  false 不可取消
+                .setCancelable(true)
+
+                //设置默认的展示动画  从中心展开缩放动画
+                //.setDefaultAnimation()
+                //从底部进入，true展示动画，false不展示
+                //.fromBottom(true)
+                //设置自定义动画
+                .setAnimation(R.style.dialog_from_bottom_anim)
+
+                .show();
+
+        alertDialog.setText(com.lyj.baselib.R.id.btn_share,"分享");
+        //获取ViewId为R.id.et_input 的view控件
+        final EditText editText = alertDialog.getView(com.lyj.baselib.R.id.et_input);
+        //为R.id.btn_confirm设置监听事件
+        alertDialog.setOnClickListener(com.lyj.baselib.R.id.btn_confirm, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,editText.getText().toString(),Toast.LENGTH_LONG).show();
+                alertDialog.dismiss();
+            }
+        });
     }
 }

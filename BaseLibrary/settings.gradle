@@ -1,1 +1,2 @@
-include ':app', ':baselib'
+include ':app', ':baselib', ':projectlib'
+//':framelib'

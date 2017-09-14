@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class NextActivity extends Activity implements View.OnClickListener{
 
-    private Button mBugBtn;
+    private static Button mBugBtn;
     private TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

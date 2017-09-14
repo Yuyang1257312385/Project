@@ -91,7 +91,7 @@ public class ActBrowser extends Activity {
     private void initParams() {
         int junkUrlCount = mSp.getInt(Constant.SP_JUNK_COUNT,0);
         for(int i=0;i<junkUrlCount;i++){
-            String junkUrl = mSp.getString(Constant.SP_JUNK+i,"");
+            String junkUrl = mSp.getString(Constant.SP_JUNK+(i+1),"");
             if(!TextUtils.isEmpty(junkUrl)){
                 mJunkUrlList.add(junkUrl);
             }
