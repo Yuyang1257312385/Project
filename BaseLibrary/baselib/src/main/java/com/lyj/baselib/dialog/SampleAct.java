@@ -42,7 +42,7 @@ public class SampleAct extends Activity {
                 .setText(R.id.btn_confirm,"确认")
 
                 //为viewid为R.id.btn_share 设置点击监听,或者可以直接对alderDialog设置监听
-                .setOnClickListener(R.id.btn_share,onShareClickListener)
+                //.setOnClickListener(R.id.btn_share,onShareClickListener)
                 //点击空白出是否可以取消，true 可以取消  false 不可取消
                 .setCancelable(true)
 
@@ -59,13 +59,13 @@ public class SampleAct extends Activity {
         //获取ViewId为R.id.et_input 的view控件
         final EditText editText = alertDialog.getView(R.id.et_input);
         //为R.id.btn_confirm设置监听事件
-        alertDialog.setOnClickListener(R.id.btn_confirm, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(SampleAct.this,editText.getText().toString(),Toast.LENGTH_LONG).show();
-                alertDialog.dismiss();
-            }
-        });
+//        alertDialog.setOnClickListener(R.id.btn_confirm, new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(SampleAct.this,editText.getText().toString(),Toast.LENGTH_LONG).show();
+//                alertDialog.dismiss();
+//            }
+//        });
 
 
 

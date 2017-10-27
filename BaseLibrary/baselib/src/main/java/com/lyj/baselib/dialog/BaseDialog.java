@@ -2,6 +2,7 @@ package com.lyj.baselib.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,9 @@ import com.lyj.baselib.R;
  * 自定义的万能dialog
  *
  * 使用：见SampleAct
- * 若需要扩展，现在本类中的build中添加set方法，然后到AlertController中添加P的字段，并在apply（）中实现
+ * 若需要扩展，
+ * 1.先在本类中的build中添加set方法，
+ * 2.然后到AlertController中添加P的字段，并在apply（）中实现
  *
  */
 
@@ -42,10 +45,23 @@ public class BaseDialog extends Dialog {
     }
 
 
-    public void setOnClickListener(int viewId, View.OnClickListener onClickListener) {
-        mAlertController.setOnClickListener(viewId,onClickListener);
+    /**
+     * 为ViewId设置监听器
+     *
+     * @param viewId
+     * @param onClickListener
+     */
+    public void setOnClickListener(int viewId, DialogInterface.OnClickListener onClickListener) {
+        mAlertController.setOnClickListener(viewId,onClickListener,this);
     }
 
+    /**
+     * 获取到ViewId的控件
+     *
+     * @param viewId
+     * @param <T>
+     * @return
+     */
     public  <T extends View> T getView(int viewId) {
         return (T)mAlertController.getView(viewId);
     }
@@ -118,23 +134,6 @@ public class BaseDialog extends Dialog {
         }
 
 
-        public Builder setOnCancelListener(OnCancelListener onCancelListener) {
-            P.mOnCancelListener = onCancelListener;
-            return this;
-        }
-
-
-        public Builder setOnDismissListener(OnDismissListener onDismissListener) {
-            P.mOnDismissListener = onDismissListener;
-            return this;
-        }
-
-
-        public Builder setOnKeyListener(OnKeyListener onKeyListener) {
-            P.mOnKeyListener = onKeyListener;
-            return this;
-        }
-
         /**
          * 为viewId对应的view 设置文本内容
          * @param viewId
@@ -155,7 +154,7 @@ public class BaseDialog extends Dialog {
          * @param listener
          * @return
          */
-        public Builder setOnClickListener(int viewId, View.OnClickListener listener){
+        public Builder setOnClickListener(int viewId, DialogInterface.OnClickListener listener){
             P.mClickArray.put(viewId,listener);
             return this;
         }
@@ -200,7 +199,7 @@ public class BaseDialog extends Dialog {
          * @return
          */
         public Builder setGravity(int gravity){
-            P.mGravity = Gravity.BOTTOM;
+            P.mGravity = gravity;
             return this;
         }
 
@@ -225,6 +224,23 @@ public class BaseDialog extends Dialog {
             if(styleAnimation != 0){
                 P.mAnimation = styleAnimation;
             }
+            return this;
+        }
+
+        public Builder setOnCancelListener(OnCancelListener onCancelListener) {
+            P.mOnCancelListener = onCancelListener;
+            return this;
+        }
+
+
+        public Builder setOnDismissListener(OnDismissListener onDismissListener) {
+            P.mOnDismissListener = onDismissListener;
+            return this;
+        }
+
+
+        public Builder setOnKeyListener(OnKeyListener onKeyListener) {
+            P.mOnKeyListener = onKeyListener;
             return this;
         }
 

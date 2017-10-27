@@ -1,5 +1,6 @@
 package com.lyj.baselibrary;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,11 +84,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_dialog:
                 showCustomDialog();
                 break;
-            case R.id.btn_net:
-                Intent intent1 = new Intent(this, NetActOne.class);
-                startActivity(intent1);
-                NetTestActivity.actionStart(this);
-                break;
+//            case R.id.btn_net:
+//                Intent intent1 = new Intent(this, NetActOne.class);
+//                startActivity(intent1);
+//                NetTestActivity.actionStart(this);
+//                break;
         }
     }
 
@@ -106,15 +107,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //.setFullWidth()
                 //设置自定义的宽高
                 //.setWidthAndHeight(100,100)
-
                 //设置在屏幕中的位置
-                .setGravity(Gravity.BOTTOM)
+                //.setGravity(Gravity.BOTTOM)
 
                 //为R.id.btn_confirm 设置文字
                 .setText(com.lyj.baselib.R.id.btn_confirm,"确认")
 
                 //为viewid为R.id.btn_share 设置点击监听,或者可以直接对alderDialog设置监听
-                .setOnClickListener(com.lyj.baselib.R.id.btn_share,onShareClickListener)
+                .setOnClickListener(com.lyj.baselib.R.id.btn_share, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        Toast.makeText(MainActivity.this,com.lyj.baselib.R.id.btn_share+"--"+which,Toast.LENGTH_SHORT).show();
+                    }
+                })
                 //点击空白出是否可以取消，true 可以取消  false 不可取消
                 .setCancelable(true)
 
@@ -131,11 +137,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //获取ViewId为R.id.et_input 的view控件
         final EditText editText = alertDialog.getView(com.lyj.baselib.R.id.et_input);
         //为R.id.btn_confirm设置监听事件
-        alertDialog.setOnClickListener(com.lyj.baselib.R.id.btn_confirm, new View.OnClickListener() {
+        alertDialog.setOnClickListener(com.lyj.baselib.R.id.btn_confirm, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
                 Toast.makeText(MainActivity.this,editText.getText().toString(),Toast.LENGTH_LONG).show();
-                alertDialog.dismiss();
             }
         });
     }

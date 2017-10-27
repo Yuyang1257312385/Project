@@ -45,8 +45,8 @@ class AlertController {
     }
 
 
-    public void setOnClickListener(int viewId, View.OnClickListener onClickListener) {
-        mDialogViewHelper.setOnClickListener(viewId,onClickListener);
+    public void setOnClickListener(int viewId, DialogInterface.OnClickListener onClickListener,BaseDialog dialog) {
+        mDialogViewHelper.setOnClickListener(viewId,onClickListener,dialog);
     }
 
     public  <T extends View> T getView(int viewId) {
@@ -79,7 +79,7 @@ class AlertController {
         // 存放文字   比hashmap高效，但key必须是int
         public SparseArray<CharSequence>  mTextArray = new SparseArray<>();
         //存放点击事件
-        public SparseArray<View.OnClickListener> mClickArray = new SparseArray<>();
+        public SparseArray<DialogInterface.OnClickListener> mClickArray = new SparseArray<>();
         public int mWidth = ViewGroup.LayoutParams.WRAP_CONTENT;
         //动画
         public int mAnimation ;
@@ -126,7 +126,7 @@ class AlertController {
             //3.设置点击
             int clickArraySize = mClickArray.size();
             for(int i=0;i<clickArraySize;i++){
-                viewHelper.setOnClickListener(mClickArray.keyAt(i),mClickArray.valueAt(i));
+                viewHelper.setOnClickListener(mClickArray.keyAt(i),mClickArray.valueAt(i),mAlert.getDialog());
             }
             //4.配置自定义效果（全屏，从底部弹出，默认动画，）
             Window window  = mAlert.getWindow();

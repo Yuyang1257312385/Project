@@ -1,6 +1,7 @@
 package com.lyj.baselib.dialog;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,12 +46,17 @@ class DialogViewHelper {
     }
 
 
-    public void setOnClickListener(int viewId, View.OnClickListener onClickListener) {
+    public void setOnClickListener(final int viewId, final DialogInterface.OnClickListener onClickListener, final BaseDialog dialog) {
         //每次findViewById比较麻烦，减少findViewById的次数
         //View view = mContentView.findViewById(viewId);
         View view = getView(viewId);
         if(view != null){
-            view.setOnClickListener(onClickListener);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickListener.onClick(dialog,viewId);
+                }
+            });
         }
     }
 

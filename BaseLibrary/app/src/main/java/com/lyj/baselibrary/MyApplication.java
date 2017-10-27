@@ -3,7 +3,6 @@ package com.lyj.baselibrary;
 import android.app.Application;
 
 import com.lyj.baselib.net.HttpUtils;
-import com.lyj.projectlib.net.OkHttpEngine;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -18,7 +17,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         setupLeakCanary();
-        HttpUtils.init(new OkHttpEngine());
     }
 
     protected RefWatcher setupLeakCanary() {
