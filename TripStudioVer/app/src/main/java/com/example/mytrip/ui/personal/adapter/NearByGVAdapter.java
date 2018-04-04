@@ -3,7 +3,7 @@ package com.example.mytrip.ui.personal.adapter;
 import java.util.List;
 
 import com.example.mytrip.R;
-import com.example.mytrip.ui.map.NearByBean;
+import com.example.mytrip.ui.baidumap.NearByBean;
 
 
 import android.content.Context;

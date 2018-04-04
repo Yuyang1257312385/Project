@@ -15,6 +15,7 @@ import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
 import com.baidu.mapapi.search.poi.PoiDetailResult;
+import com.baidu.mapapi.search.poi.PoiIndoorResult;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.example.mytrip.R;
 
@@ -84,6 +85,11 @@ public class SightListFragment extends Fragment implements OnRefreshListener, On
 
             @Override
             public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
+
+            }
+
+            @Override
+            public void onGetPoiIndoorResult(PoiIndoorResult poiIndoorResult) {
 
             }
         });

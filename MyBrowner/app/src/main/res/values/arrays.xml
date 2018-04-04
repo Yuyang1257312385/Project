@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Used in app/dialog examples -->
-    <string-array name="select_search_engine">
-        <item>百度</item>
-        <item>必应</item>
-        <item>自定义</item>
-    </string-array>
-</resources>

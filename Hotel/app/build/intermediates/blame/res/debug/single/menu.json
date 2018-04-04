@@ -4,6 +4,10 @@
         "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\menu\\main.xml"
     },
     {
+        "merged": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\menu\\main.xml"
     }

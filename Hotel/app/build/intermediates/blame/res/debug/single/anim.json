@@ -12,7 +12,15 @@
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\anim\\welcome.xml"
     },
     {
+        "merged": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\anim\\welcome_tween.xml",
+        "source": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\src\\main\\res\\anim\\welcome_tween.xml"
+    },
+    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\anim\\welcome_tween.xml",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\anim\\welcome_tween.xml"
+    },
+    {
+        "merged": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\anim\\welcome.xml",
+        "source": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\src\\main\\res\\anim\\welcome.xml"
     }
 ]

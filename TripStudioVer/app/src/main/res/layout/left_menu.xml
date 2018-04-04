@@ -80,56 +80,6 @@
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rl_collect" >
-
-            <ImageView
-                android:id="@+id/id_img3"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_drawer_favorite_normal"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@id/id_img3"
-                android:text="收藏"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rl_download_map" >
-
-            <ImageView
-                android:id="@+id/id_img4"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                 android:src="@drawable/ic_drawer_offline_normal"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:layout_toRightOf="@id/id_img4"
-                android:text="离线"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
             android:layout_height="wrap_content" 
             android:id="@+id/rl_exercise">
 

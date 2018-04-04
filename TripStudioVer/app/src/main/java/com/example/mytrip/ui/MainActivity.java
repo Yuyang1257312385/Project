@@ -17,9 +17,8 @@ import com.example.mytrip.ui.feedback.FeedBackActivity;
 import com.example.mytrip.ui.footprint.FootPrintActivity;
 import com.example.mytrip.ui.personal.bean.MyUser;
 import com.example.mytrip.ui.login.LoginActivity;
-import com.example.mytrip.ui.map.MapOfflineActivity;
 import com.example.mytrip.ui.post.PublishPostActivity;
-import com.example.mytrip.ui.map.NearByFragment;
+import com.example.mytrip.ui.baidumap.NearByFragment;
 import com.example.mytrip.ui.post.PostFragment;
 import com.example.mytrip.ui.strategy.SightListFragment;
 import com.example.mytrip.ui.slideitem.ExerciseActivity;
@@ -63,7 +62,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 
     private SlidingMenu mLeftMenu;
-    private View mUserHeadRl, mFootPrintRl, mCollectRl, mDownloadMap,
+    private View mUserHeadRl, mFootPrintRl,
             mExerciseRl, mSetRl, mFeedBackRl;
     private XCRoundImageView mLeftHeadIv;
     private Button mLoginBtn;
@@ -102,8 +101,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         mPostBtn = (Button) findViewById(R.id.btn_post);
         mUserHeadRl = findViewById(R.id.rl_user_head);
         mFootPrintRl = findViewById(R.id.rl_foot_print);
-        mCollectRl = findViewById(R.id.rl_collect);
-        mDownloadMap = findViewById(R.id.rl_download_map);
         mExerciseRl = findViewById(R.id.rl_exercise);
         mSetRl = findViewById(R.id.rl_set);
         mFeedBackRl = findViewById(R.id.rl_feed_back);
@@ -140,8 +137,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         mLoginBtn.setOnClickListener(this);
         mUserHeadRl.setOnClickListener(this);
         mFootPrintRl.setOnClickListener(this);
-        mCollectRl.setOnClickListener(this);
-        mDownloadMap.setOnClickListener(this);
         mExerciseRl.setOnClickListener(this);
         mSetRl.setOnClickListener(this);
         mFeedBackRl.setOnClickListener(this);
@@ -246,10 +241,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             case R.id.iv_head_img:
                 Intent intentSet = new Intent(MainActivity.this, SetActivity.class);
                 startActivity(intentSet);
-                break;
-            case R.id.rl_download_map:
-                Intent intentMap = new Intent(MainActivity.this, MapOfflineActivity.class);
-                startActivity(intentMap);
                 break;
             case R.id.rl_exercise:
                 Intent intent6 = new Intent(MainActivity.this, ExerciseActivity.class);

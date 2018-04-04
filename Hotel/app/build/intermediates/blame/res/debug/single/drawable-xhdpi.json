@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ck_min.png",
+        "source": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\ck_min.png"
+    },
+    {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
         "source": "C:\\LYJ\\prepare\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
     },
@@ -14,6 +18,18 @@
     {
         "merged": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ck_min.png",
         "source": "C:\\LYJ\\MyGitRepo\\Project\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\ck_min.png"
+    },
+    {
+        "merged": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\checked_info_search.png",
+        "source": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\checked_info_search.png"
+    },
+    {
+        "merged": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
+        "source": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\cke_min.png",
+        "source": "D:\\LYJCode\\GitProject\\Project\\Hotel\\app\\src\\main\\res\\drawable-xhdpi\\cke_min.png"
     },
     {
         "merged": "C:\\LYJ\\prepare\\Hotel\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ck_min.png",

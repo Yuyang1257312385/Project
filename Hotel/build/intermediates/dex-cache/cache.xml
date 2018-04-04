@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\yu\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jar="C:\Users\Yanjun.Lu\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
         jumboMode="false"
         optimize="true"
-        revision="25.0.2"
+        revision="26.0.2"
         sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67">
-        <dex dex="C:\LYJ\MyGitRepo\Project\Hotel\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0_ce97de18047f4314f1de463cd228c69a6361afb4.jar" />
+        <dex dex="D:\LYJCode\GitProject\Project\Hotel\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0_bad819779f93ccd2255e4c0c9c844d73044fe835.jar" />
     </item>
 
 </items>

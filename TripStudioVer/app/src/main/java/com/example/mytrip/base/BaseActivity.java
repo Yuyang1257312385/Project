@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.mytrip.tools.SPUtils;
 
+import butterknife.ButterKnife;
 import skin.support.app.SkinCompatActivity;
 import skin.support.observe.SkinObserver;
 
@@ -21,6 +22,7 @@ public class BaseActivity extends SkinCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
         initBaseParams();
     }
 
